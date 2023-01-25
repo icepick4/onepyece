@@ -4,7 +4,7 @@ with open("README.md", "r", encoding = "utf-8") as file:
     long_description = file.read()
 
 setuptools.setup(
-    name = "one-pyce",
+    name = "one-pyece",
     version = "0.0.1",
     author = "Rémi JARA",
     author_email = "remi.jara4@gmail.com",
