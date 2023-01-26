@@ -28,3 +28,10 @@ class TestAPI(unittest.TestCase):
         self.assertRaises(AttributeError, getattr, api_object, "id")
         self.assertIsInstance(api_object.results[0], dict)
         self.assertEqual(api_object.results[0]["french_name"], "Haki de l'Observation")
+
+    def test_count(self):
+        api_object = interface.API("hakis")
+        self.assertIsInstance(api_object, interface.API)
+        self.assertEqual(api_object.count, 3)
+
+    

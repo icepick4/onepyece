@@ -1,3 +1,5 @@
+import json
+
 URL = "https://api.api-onepiece.com/"
 ENDPOINTS = {
     "episodes": ["id", "count", "title"],
@@ -50,3 +52,6 @@ def convert_name(name):
     if ' / ' in name:
         name = name.split(" / ")[0]
     return name.replace(" ", "%20")
+
+def pretty_print(data):
+    return json.dumps(data, indent=4)
