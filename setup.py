@@ -11,7 +11,7 @@ setuptools.setup(
     description = "A package to use the One-Piece API : https://api-onepiece.com/",
     long_description = long_description,
     long_description_content_type = "text/markdown",
-    url = "package URL",
+    url = "https://github.com/icepick4/one-pyece",
     project_urls = {
         "Bug Tracker": "package issues URL",
     },
@@ -20,7 +20,7 @@ setuptools.setup(
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
-    package_dir = {"": "src"},
+    package_dir = {"": "onepyece"},
     packages = setuptools.find_packages(where="src"),
     python_requires = ">=3.6"
 )
