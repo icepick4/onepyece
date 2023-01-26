@@ -1,43 +1,29 @@
 from .api import get_data
+from .common import build_url
 
 
 class API:
-    def __init__(self, endpoint, search, resource_id):
+    def __init__(self, endpoint, search, resource):
         self.endpoint = endpoint
         self.search = search
-        self.resource_id = resource_id
-        self.result = {}
+        self.resource = resource
+        self.url = build_url(endpoint, search, resource)
         self.load()
 
     def __repr__(self):
-        return f"API(endpoint={self.endpoint}, resource_id={self.resource_id})"
+        return f"API(endpoint={self.endpoint}, resource_id={self.resource})"
 
     def __str__(self):
-        return str(self.result["french_name"])
-
-    def load(self):
-        self.__dict__.update(get_data(self.endpoint, self.search, self.resource_id))
-
-
-class APIList:
-    def __init__(self, endpoint):
-        self.endpoint = endpoint
-        self.name = self.endpoint.replace("/", " ").title()
-        self.results = []
-        self.load()
-
-    def __repr__(self):
-        return f"APIList(endpoint={self.endpoint})"
-
-    def __str__(self):
-        return str(self.name)
+        return str(self.resource)
 
     def __iter__(self):
         return iter(self.results)
 
     def load(self):
-        data = get_data(self.endpoint)
-        for resource in data:
-            resource_id = resource["french_name"]
-            api = API(self.endpoint, resource_id)
-            self.results.append(api)
+        api_data = get_data(self.url)
+        if api_data is None:
+            raise ValueError(f"No data found for the given search:{self.search} and resource_id:{self.resource}")
+        elif isinstance(api_data, list):
+            self.results = api_data
+        else:
+            self.__dict__.update(api_data)

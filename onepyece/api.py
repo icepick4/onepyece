@@ -3,8 +3,7 @@ import requests
 from .common import build_url
 
 
-def get_data(endpoint, search=None, resource_id=None):
-    url = build_url(endpoint, search, resource_id)
+def get_data(url):
     response = requests.get(url)
     response.raise_for_status()
-    return list(response.json())[0] if "search" in url else response.json()
+    return None if response.json() is None else response.json()
