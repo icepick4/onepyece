@@ -16,7 +16,7 @@ class API:
         return str(self.result["french_name"])
 
     def load(self):
-        self.result = get_data(self.endpoint, self.search, self.resource_id)
+        self.__dict__.update(get_data(self.endpoint, self.search, self.resource_id))
 
 
 class APIList:
