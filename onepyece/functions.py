@@ -73,10 +73,74 @@ def character_by_name(resource_id):
 def count_characters():
     return API("characters", "count")
 
+def dial_by_id(resource_id):
+    return API("dials", "id", resource_id)
 
+def dial_by_name(resource_id):
+    return API("dials", "name", resource_id)
 
+def count_dials():
+    return API("dials", "count")
 
+def luffy_gear_by_id(resource_id):
+    return API("luffy/gears", "id", resource_id)
 
+def luffy_gear_by_name(resource_id):
+    return API("luffy/gears", "name", resource_id)
 
+def count_luffy_gears():
+    return API("luffy/gears", "count")
 
+def luffy_tech_by_id(resource_id):
+    return API("luffy/techniques", "id", resource_id)
 
+def luffy_tech_by_name(resource_id):
+    return API("luffy/techniques", "name", resource_id)
+
+def count_luffy_techs():
+    return API("luffy/techniques", "count")
+
+def locate_by_id(resource_id):
+    return API("locates", "id", resource_id)
+
+def locate_by_name(resource_id):
+    return API("locates", "name", resource_id)
+
+def count_locates():
+    return API("locates", "count")
+
+def fruit_by_id(resource_id):
+    return API("fruits", "id", resource_id)
+
+def fruit_by_name(resource_id):
+    return API("fruits", "name", resource_id)
+
+def count_fruits():
+    return API("fruits", "count")
+
+def sword_by_id(resource_id):
+    return API("swords", "id", resource_id)
+
+def sword_by_name(resource_id):
+    return API("swords", "name", resource_id)
+
+def count_swords():
+    return API("swords", "count")
+
+def boat_by_id(resource_id):
+    return API("boats", "id", resource_id)
+
+def boat_by_name(resource_id):
+    return API("boats", "name", resource_id)
+
+def count_boats():
+    return API("boats", "count")
+
+def crew_by_id(resource_id):
+    return API("crews", "id", resource_id)
+
+def crew_by_name(resource_id):
+    return API("crews", "name", resource_id)
+
+def count_crews():
+    return API("crews", "count")

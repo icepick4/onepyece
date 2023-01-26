@@ -9,7 +9,7 @@ ENDPOINTS = {
     "arcs": ["id", "count", "title"],
     "sagas": ["id", "count", "title"],
     "hakis": ["id", "count", "name"],
-    "characters": ["id", "count", "name"],
+    "characters": ["id", "count", "name", "job", "bounty", "status", "size"],
     "dials": ["id", "count", "name"],
     "luffy/gears": ["id", "count", "title"],
     "luffy/techniques": ["id", "count", "name"],

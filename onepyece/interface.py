@@ -14,15 +14,21 @@ class API:
         return f"API(endpoint={self.endpoint}, resource_id={self.resource})"
 
     def __str__(self):
-        if getattr(self, "count", None) is not None:
-            return f"Total {self.endpoint} found: {self.count}"
         if getattr(self, "results", None) is not None:
             return f"{self.results}"
+        if getattr(self, "count", None) is not None:
+            return f"Total {self.endpoint} found: {self.count}"
         return pretty_print(self.__dict__)
 
     def __iter__(self):
         return iter(self.results)
 
+    def __getitem__(self, item):
+        return self.results[item]
+
+    def __len__(self):
+        return self.count if getattr(self, "count", None) is not None else 0
+        
     def load(self):
         api_data = get_data(self.url)
         if api_data is None:
