@@ -1,10 +1,10 @@
 from .api import get_data
-from .common import build_url
 
 
 class API:
-    def __init__(self, endpoint, resource_id):
+    def __init__(self, endpoint, search, resource_id):
         self.endpoint = endpoint
+        self.search = search
         self.resource_id = resource_id
         self.result = {}
         self.load()
@@ -16,7 +16,7 @@ class API:
         return str(self.result["french_name"])
 
     def load(self):
-        self.result = get_data(self.endpoint, self.resource_id)
+        self.result = get_data(self.endpoint, self.search, self.resource_id)
 
 
 class APIList:
