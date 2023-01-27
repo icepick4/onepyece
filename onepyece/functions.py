@@ -9,6 +9,10 @@ def episode_by_title(resource_id):
     return API("episodes", "title", resource_id)
 
 
+def episode_by_saga_id(resource_id):
+    return API("episodes", "saga_id", resource_id)
+
+
 def count_episodes():
     return API("episodes", "count")
 

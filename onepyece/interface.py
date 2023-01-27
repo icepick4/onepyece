@@ -17,7 +17,7 @@ class API:
         if getattr(self, "results", None) is not None:
             for result in self.results:
                 print(pretty_print(result))
-            return None
+            return ""
         if getattr(self, "count", None) is not None:
             return f"Total {self.endpoint} found: {self.count}"
         return pretty_print(self.__dict__)
