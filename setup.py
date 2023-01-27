@@ -4,7 +4,7 @@ with open("README.md", "r", encoding="utf-8") as file:
     long_description = file.read()
 
 setuptools.setup(
-    name="one-pyece",
+    name="onepyece",
     version="0.0.3",
     author="Rémi JARA",
     author_email="remi.jara4@gmail.com",
@@ -20,7 +20,7 @@ setuptools.setup(
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
-    package_dir={"": "onepyece"},
-    packages=setuptools.find_packages(where="onepyece"),
+    packages=["onepyece"],
     python_requires=">=3.6",
+    install_requires=["requests"],
 )
