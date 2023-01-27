@@ -1,5 +1,8 @@
 # One Pyece
-Python package for https://api-onepiece.com/ 
+Python API wrapper for https://api-onepiece.com/
+Thank's to this package you can simply get informations about One Piece characters, fruits, crews, etc.
+Learn more about possibilities in the [Usage](#usage) section.
+This package is still in development, so it may not be stable.
 
 ## Installation
 
@@ -12,10 +15,10 @@ There are several solutions :
 
 ```py
 >>> import onepyece as op
->>> sanji = op.character_by_name('sanji') 
+>>> sanji = op.character_by_name('sanji') # You can get a character by its name
 >>> sanji.birthday
 '2000-03-02'
->>> nb_fruits = op.count_fruits()
+>>> nb_fruits = op.count_fruits() # You can get the count of a specific endpoint
 >>> nb_fruits.count
 197
 >>> nb_fruits.url
