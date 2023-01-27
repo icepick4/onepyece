@@ -1,6 +1,13 @@
 # One Pyece
 Python package for https://api-onepiece.com/ 
 
+## Installation
+
+There are several solutions :
+
+- Use this command ``pip install git+https://github.com/icepick4/one-pyece`` to download it from this repo.
+- [⚠️COMING SOON] Download either the .zip or the tar.gz archive from the last release and then use this command `` pip install <path_to_archive> ``
+
 ## Usage
 
 ```py
