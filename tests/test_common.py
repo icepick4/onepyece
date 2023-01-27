@@ -4,36 +4,36 @@ from onepyece import common
 
 
 class TestBuildURL(unittest.TestCase):
-    def test_build_url_no_search(self, endpoint="characters"):
+    def test_url_no_search(self, endpoint="characters"):
         url = common.build_url(endpoint)
         self.assertEqual(url, "https://api.api-onepiece.com/characters")
 
-    def test_build_url_with_search(self, endpoint="characters", search="id", resource_id="1"):
-        url = common.build_url(endpoint, search, resource_id)
+    def test_url_with_search(self, endpoint="characters", search="id", resource="1"):
+        url = common.build_url(endpoint, search, resource)
         self.assertEqual(url, "https://api.api-onepiece.com/characters/1")
 
-    def test_build_url_with_search_and_count(self, endpoint="characters", search="count"):
+    def test_url_with_search_and_count(self, endpoint="characters", search="count"):
         url = common.build_url(endpoint, search)
         self.assertEqual(url, "https://api.api-onepiece.com/characters/count")
 
-    def test_build_url_with_search_and_resource_id(self, endpoint="characters", search="name", resource_id="Monkey D Luffy"):
-        url = common.build_url(endpoint, search, resource_id)
+    def test_url_with_search_and_resource_id(self, endpoint="characters", search="name", resource="Monkey D Luffy"):
+        url = common.build_url(endpoint, search, resource)
         self.assertEqual(url, "https://api.api-onepiece.com/characters/search/name/Monkey%20D%20Luffy")
 
-    def test_build_url_with_search_and_resource_id_with_slash(self, endpoint="characters", search="name", resource_id="Baggy / Le Clown"):
-        url = common.build_url(endpoint, search, resource_id)
+    def test_url_with_search_and_with_slash(self, endpoint="characters", search="name", resource="Baggy / Le Clown"):
+        url = common.build_url(endpoint, search, resource)
         self.assertEqual(url, "https://api.api-onepiece.com/characters/search/name/Baggy")
 
-    def test_build_url_with_search_and_resource_id_with_slash_and_space(self, endpoint="characters", search="name", resource_id="Baggy / Le Clown "):
-        url = common.build_url(endpoint, search, resource_id)
+    def test_url_search_with_slash_and_space(self, endpoint="characters", search="name", resource="Baggy / Le Clown "):
+        url = common.build_url(endpoint, search, resource)
         self.assertEqual(url, "https://api.api-onepiece.com/characters/search/name/Baggy")
 
-    def test_build_url_by_title(self, endpoint="episodes", search="title", resource_id="Je suis Luffy !"):
-        url = common.build_url(endpoint, search, resource_id)
+    def test_url_by_title(self, endpoint="episodes", search="title", resource="Je suis Luffy !"):
+        url = common.build_url(endpoint, search, resource)
         self.assertEqual(url, "https://api.api-onepiece.com/episodes/search/Je%20suis%20Luffy%20!")
 
-    def test_build_url_search_other_id(self, endpoint="boats", search="crew_id", resource_id="1"):
-        url = common.build_url(endpoint, search, resource_id)
+    def test_url_search_other_id(self, endpoint="boats", search="crew_id", resource="1"):
+        url = common.build_url(endpoint, search, resource)
         self.assertEqual(url, "https://api.api-onepiece.com/boats/search/crew/1")
 
 
@@ -52,11 +52,12 @@ class TestCheckParams(unittest.TestCase):
     def test_search_no_resource(self, endpoint="characters", search="id"):
         self.assertRaises(ValueError, common.check_params, endpoint, search)
 
-    def test_search_with_resource(self, endpoint="characters", search="id", resource_id="1"):
-        self.assertEqual(common.check_params(endpoint, search, resource_id), None)
+    def test_search_with_resource(self, endpoint="characters", search="id", resource="1"):
+        self.assertEqual(common.check_params(endpoint, search, resource), None)
 
-    def test_search_with_wrong_value(self, endpoint="characters", search="wrong", resource_id="1"):
-        self.assertRaises(ValueError, common.check_params, endpoint, search, resource_id)
+    def test_search_with_wrong_value(self, endpoint="characters", search="wrong", resource="1"):
+        self.assertRaises(ValueError, common.check_params, endpoint, search, resource)
+
 
 class TestConvertName(unittest.TestCase):
     def test_convert_name(self, name="Baggy / Le Clown"):

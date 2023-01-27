@@ -33,5 +33,3 @@ class TestAPI(unittest.TestCase):
         api_object = interface.API("hakis")
         self.assertIsInstance(api_object, interface.API)
         self.assertEqual(api_object.count, 3)
-
-    

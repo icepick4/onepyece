@@ -32,7 +32,7 @@ class API:
 
     def __len__(self):
         return self.count if getattr(self, "count", None) is not None else 0
-        
+
     def load(self):
         api_data = get_data(self.url)
         if api_data is None:

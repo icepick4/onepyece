@@ -23,6 +23,7 @@ ENDPOINTS = {
 STRING_SEARCHES = ["name", "job", "bounty", "status", "size", "type"]
 ID_SEARCHES = ["crew_id", "captain_id"]
 
+
 def check_params(endpoint, search=None, resource_id=None):
     if endpoint not in ENDPOINTS:
         raise ValueError(f"Unknown API endpoint '{endpoint}'")
@@ -34,6 +35,7 @@ def check_params(endpoint, search=None, resource_id=None):
         raise ValueError("Resource ID must be a string")
     return None
 
+
 def build_url(endpoint, search=None, resource_id=None):
     check_params(endpoint, search, resource_id)
     if search is not None:
@@ -42,6 +44,7 @@ def build_url(endpoint, search=None, resource_id=None):
             return adding_search(endpoint, search, resource_id)
         return f"{URL}{endpoint}/count"
     return f"{URL}{endpoint}"
+
 
 def adding_search(endpoint, search, resource_id=None):
     if search in STRING_SEARCHES:
@@ -52,10 +55,12 @@ def adding_search(endpoint, search, resource_id=None):
         return f"{URL}{endpoint}/search/{resource_id}"
     return f"{URL}{endpoint}/{resource_id}"
 
+
 def convert_name(name):
     if ' / ' in name:
         name = name.split(" / ")[0]
     return name.replace(" ", "%20")
+
 
 def pretty_print(data):
     return json.dumps(data, indent=4)

@@ -2,7 +2,6 @@ import unittest
 
 from onepyece import functions
 from onepyece.common import ENDPOINTS
-from onepyece.interface import API
 
 
 class TestFunctions(unittest.TestCase):
