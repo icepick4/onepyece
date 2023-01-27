@@ -3,12 +3,13 @@ from .common import build_url, pretty_print
 
 
 class API:
-    def __init__(self, endpoint, search=None, resource=None):
+    def __init__(self, endpoint, search=None, resource=None, object=False):
         self.endpoint = endpoint
         self.search = search
         self.resource = resource
         self.url = build_url(endpoint, search, resource)
-        self.load()
+        if not object:
+            self.load()
 
     def __repr__(self):
         return f"API(endpoint={self.endpoint}, resource_id={self.resource})"
@@ -21,7 +22,9 @@ class API:
         return pretty_print(self.__dict__)
 
     def __iter__(self):
-        return iter(self.results)
+        if getattr(self, "results", None) is not None:
+            return iter(self.results)
+        raise TypeError(f"Object of type {type(self)} is not iterable")
 
     def __getitem__(self, item):
         return self.results[item]

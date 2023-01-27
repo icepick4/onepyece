@@ -32,6 +32,10 @@ class TestBuildURL(unittest.TestCase):
         url = common.build_url(endpoint, search, resource_id)
         self.assertEqual(url, "https://api.api-onepiece.com/episodes/search/Je%20suis%20Luffy%20!")
 
+    def test_build_url_search_other_id(self, endpoint="boats", search="crew_id", resource_id="1"):
+        url = common.build_url(endpoint, search, resource_id)
+        self.assertEqual(url, "https://api.api-onepiece.com/boats/search/crew/1")
+
 
 class TestCheckParams(unittest.TestCase):
     """ Test the check_params function

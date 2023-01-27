@@ -16,10 +16,12 @@ ENDPOINTS = {
     "locates": ["id", "count", "name"],
     "fruits": ["id", "count", "type"],
     "swords": ["id", "count", "name"],
-    "boats": ["id", "count", "name"],
+    "boats": ["id", "count", "name", "type", "crew_id", "captain_id"],
     "crews": ["id", "count", "name"],
 }
 
+STRING_SEARCHES = ["name", "job", "bounty", "status", "size", "type"]
+ID_SEARCHES = ["crew_id", "captain_id"]
 
 def check_params(endpoint, search=None, resource_id=None):
     if endpoint not in ENDPOINTS:
@@ -42,9 +44,11 @@ def build_url(endpoint, search=None, resource_id=None):
     return f"{URL}{endpoint}"
 
 def adding_search(endpoint, search, resource_id=None):
-    if search == "name":
+    if search in STRING_SEARCHES:
         return f"{URL}{endpoint}/search/{search}/{resource_id}"
-    if search == "title":
+    elif search in ID_SEARCHES:
+        return f"{URL}{endpoint}/search/{search[:-3]}/{resource_id}"
+    elif search == "title":
         return f"{URL}{endpoint}/search/{resource_id}"
     return f"{URL}{endpoint}/{resource_id}"
 

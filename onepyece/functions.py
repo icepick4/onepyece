@@ -70,6 +70,18 @@ def character_by_id(resource_id):
 def character_by_name(resource_id):
     return API("characters", "name", resource_id)
 
+def character_by_job(resource_id):
+    return API("characters", "job", resource_id)
+
+def character_by_bounty(resource_id):
+    return API("characters", "bounty", resource_id)
+
+def character_by_status(resource_id):
+    return API("characters", "status", resource_id)
+
+def character_by_size(resource_id):
+    return API("characters", "size", resource_id)
+
 def count_characters():
     return API("characters", "count")
 
@@ -85,19 +97,19 @@ def count_dials():
 def luffy_gear_by_id(resource_id):
     return API("luffy/gears", "id", resource_id)
 
-def luffy_gear_by_name(resource_id):
-    return API("luffy/gears", "name", resource_id)
+def luffy_gear_by_title(resource_id):
+    return API("luffy/gears", "title", resource_id)
 
 def count_luffy_gears():
     return API("luffy/gears", "count")
 
-def luffy_tech_by_id(resource_id):
+def luffy_technique_by_id(resource_id):
     return API("luffy/techniques", "id", resource_id)
 
-def luffy_tech_by_name(resource_id):
+def luffy_technique_by_name(resource_id):
     return API("luffy/techniques", "name", resource_id)
 
-def count_luffy_techs():
+def count_luffy_techniques():
     return API("luffy/techniques", "count")
 
 def locate_by_id(resource_id):
@@ -114,6 +126,9 @@ def fruit_by_id(resource_id):
 
 def fruit_by_name(resource_id):
     return API("fruits", "name", resource_id)
+
+def fruit_by_type(resource_id):
+    return API("fruits", "type", resource_id)
 
 def count_fruits():
     return API("fruits", "count")
@@ -132,6 +147,15 @@ def boat_by_id(resource_id):
 
 def boat_by_name(resource_id):
     return API("boats", "name", resource_id)
+
+def boat_by_type(resource_id):
+    return API("boats", "type", resource_id)
+
+def boat_by_crew_id(resource_id):
+    return API("boats", "crew_id", resource_id)
+
+def boat_by_captain_id(resource_id):
+    return API("boats", "captain_id", resource_id)
 
 def count_boats():
     return API("boats", "count")

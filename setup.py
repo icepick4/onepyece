@@ -5,7 +5,7 @@ with open("README.md", "r", encoding = "utf-8") as file:
 
 setuptools.setup(
     name = "one-pyece",
-    version = "0.0.1",
+    version = "0.0.3",
     author = "Rémi JARA",
     author_email = "remi.jara4@gmail.com",
     description = "A package to use the One-Piece API : https://api-onepiece.com/",
@@ -21,6 +21,6 @@ setuptools.setup(
         "Operating System :: OS Independent",
     ],
     package_dir = {"": "onepyece"},
-    packages = setuptools.find_packages(where="src"),
-    python_requires = ">=3.6"
+    packages = setuptools.find_packages(where = "onepyece"),
+    python_requires = ">=3.6",
 )
