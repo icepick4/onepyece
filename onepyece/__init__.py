@@ -1,24 +1,4 @@
-from .functions import (arc_by_id, arc_by_title, boat_by_captain_id,
-                        boat_by_crew_id, boat_by_id, boat_by_name,
-                        boat_by_type, chapter_by_id, chapter_by_title,
-                        character_by_bounty, character_by_id, character_by_job,
-                        character_by_name, character_by_size,
-                        character_by_status, count_arcs, count_boats,
-                        count_chapters, count_characters, count_crews,
-                        count_dials, count_episodes, count_fruits, count_hakis,
-                        count_locates, count_luffy_gears,
-                        count_luffy_techniques, count_movies, count_sagas,
-                        count_swords, count_tomes, crew_by_id, crew_by_name,
-                        crew_by_status, dial_by_id, dial_by_name, dial_by_type,
-                        episode_by_id, episode_by_title, fruit_by_id,
-                        fruit_by_name, fruit_by_type, haki_by_id, haki_by_name,
-                        haki_by_roman_name, locate_by_affiliation,
-                        locate_by_id, locate_by_name, locate_by_sea,
-                        luffy_gear_by_id, luffy_gear_by_title,
-                        luffy_technique_by_id, luffy_technique_by_name,
-                        luffy_technique_by_translation, movie_by_id,
-                        movie_by_title, saga_by_id, saga_by_title, sword_by_id,
-                        sword_by_name, tome_by_id, tome_by_title)
+from .functions import *
 from .interface import API
 
 __all__ = [
