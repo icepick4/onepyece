@@ -1,7 +1,5 @@
 import requests
 
-from .common import build_url
-
 
 def get_data(url):
     response = requests.get(url)

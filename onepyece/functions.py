@@ -61,6 +61,9 @@ def haki_by_id(resource_id):
 def haki_by_name(resource_id):
     return API("hakis", "name", resource_id)
 
+def haki_by_roman_name(resource_id):
+    return API("hakis", "roman_name", resource_id)
+
 def count_hakis():
     return API("hakis", "count")
 
@@ -91,6 +94,9 @@ def dial_by_id(resource_id):
 def dial_by_name(resource_id):
     return API("dials", "name", resource_id)
 
+def dial_by_type(resource_id):
+    return API("dials", "type", resource_id)
+
 def count_dials():
     return API("dials", "count")
 
@@ -109,6 +115,9 @@ def luffy_technique_by_id(resource_id):
 def luffy_technique_by_name(resource_id):
     return API("luffy/techniques", "name", resource_id)
 
+def luffy_technique_by_translation(resource_id):
+    return API("luffy/techniques", "translation", resource_id)
+
 def count_luffy_techniques():
     return API("luffy/techniques", "count")
 
@@ -117,6 +126,12 @@ def locate_by_id(resource_id):
 
 def locate_by_name(resource_id):
     return API("locates", "name", resource_id)
+
+def locate_by_sea(resource_id):
+    return API("locates", "sea", resource_id)
+
+def locate_by_affiliation(resource_id):
+    return API("locates", "affiliation", resource_id)
 
 def count_locates():
     return API("locates", "count")
@@ -165,6 +180,9 @@ def crew_by_id(resource_id):
 
 def crew_by_name(resource_id):
     return API("crews", "name", resource_id)
+
+def crew_by_status(resource_id):
+    return API("crews", "status", resource_id)
 
 def count_crews():
     return API("crews", "count")

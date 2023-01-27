@@ -8,16 +8,16 @@ ENDPOINTS = {
     "chapters": ["id", "count", "title"],
     "arcs": ["id", "count", "title"],
     "sagas": ["id", "count", "title"],
-    "hakis": ["id", "count", "name"],
+    "hakis": ["id", "count", "name", "roman_name"],
     "characters": ["id", "count", "name", "job", "bounty", "status", "size"],
-    "dials": ["id", "count", "name"],
+    "dials": ["id", "count", "name", "type"],
     "luffy/gears": ["id", "count", "title"],
-    "luffy/techniques": ["id", "count", "name"],
-    "locates": ["id", "count", "name"],
+    "luffy/techniques": ["id", "count", "name", "translation"],
+    "locates": ["id", "count", "name", "sea", "affiliation"],
     "fruits": ["id", "count", "type"],
     "swords": ["id", "count", "name"],
     "boats": ["id", "count", "name", "type", "crew_id", "captain_id"],
-    "crews": ["id", "count", "name"],
+    "crews": ["id", "count", "name", "status"],
 }
 
 STRING_SEARCHES = ["name", "job", "bounty", "status", "size", "type"]

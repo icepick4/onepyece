@@ -3,20 +3,21 @@ from .common import build_url, pretty_print
 
 
 class API:
-    def __init__(self, endpoint, search=None, resource=None, object=False):
+    def __init__(self, endpoint, search=None, resource=None):
         self.endpoint = endpoint
         self.search = search
         self.resource = resource
         self.url = build_url(endpoint, search, resource)
-        if not object:
-            self.load()
+        self.load()
 
     def __repr__(self):
         return f"API(endpoint={self.endpoint}, resource_id={self.resource})"
 
     def __str__(self):
         if getattr(self, "results", None) is not None:
-            return f"{self.results}"
+            for result in self.results:
+                print(pretty_print(result))
+            return None
         if getattr(self, "count", None) is not None:
             return f"Total {self.endpoint} found: {self.count}"
         return pretty_print(self.__dict__)
