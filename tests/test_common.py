@@ -1,6 +1,6 @@
 import unittest
 
-from onepyece import common
+from onepyece import common, interface
 
 
 class TestBuildURL(unittest.TestCase):
@@ -39,7 +39,6 @@ class TestBuildURL(unittest.TestCase):
 
 class TestCheckParams(unittest.TestCase):
     """ Test the check_params function
-
     The None value is returned if the parameters are valid
     The ValueError is raised if the parameters are not valid
     """
@@ -65,3 +64,14 @@ class TestConvertName(unittest.TestCase):
 
     def test_convert_name_with_space(self, name="Baggy / Le Clown "):
         self.assertEqual(common.convert_name(name), "Baggy")
+
+
+class TestEndpointsSearches(unittest.TestCase):
+    def test_endpoints(self):
+        """Testing if all combinations of endpoints and searches return some data.
+        The ValueError means that resource doesnt exist but the endpoint and search are valid
+        """
+        resource = "123456798123456789"
+        for endpoint in common.ENDPOINTS:
+            for search in common.ENDPOINTS[endpoint]:
+                self.assertRaises(ValueError, interface.API, endpoint, search, resource)

@@ -5,14 +5,14 @@ ENDPOINTS = {
     "episodes": ["id", "count", "title", "saga_id", "arc_id"],
     "movies": ["id", "count", "title"],
     "tomes": ["id", "count", "title"],
-    "chapters": ["id", "count", "title"],
-    "arcs": ["id", "count", "title"],
+    "chapters": ["id", "count", "title", "tome_id", "tome"],
+    "arcs": ["id", "count", "saga_id"],
     "sagas": ["id", "count", "title"],
-    "hakis": ["id", "count", "name", "roman_name"],
+    "hakis": ["id", "count", "name", "roman_name", "characters_id"],
     "characters": ["id", "count", "name", "job", "bounty", "status", "size"],
     "dials": ["id", "count", "name", "type"],
     "luffy/gears": ["id", "count", "title"],
-    "luffy/techniques": ["id", "count", "name", "translation"],
+    "luffy/techniques": ["id", "count", "name", "translation", "gear_id"],
     "locates": ["id", "count", "name", "sea", "affiliation"],
     "fruits": ["id", "count", "type"],
     "swords": ["id", "count", "name"],
@@ -20,9 +20,9 @@ ENDPOINTS = {
     "crews": ["id", "count", "name", "status", "yonko"],
 }
 
-STRING_SEARCHES = ["name", "job", "bounty", "status", "size", "type"]
+STRING_SEARCHES = ["name", "job", "bounty", "status", "size", "type", "tome_name", "roman_name", "sea", "affiliation"]
 ID_SEARCHES = ["crew_id", "captain_id"]
-NO_SEARCH_ID_SEARCHES = ["saga_id", "arc_id"]
+NO_SEARCH_ID_SEARCHES = ["saga_id", "arc_id", "characters_id", "gear_id", "tome_id"]
 NO_RESOURCE_SEARCHES = ["count", "yonko"]
 
 
@@ -51,7 +51,7 @@ def build_url(endpoint, search=None, resource_id=None):
 def adding_search(endpoint, search, resource_id=None):
     if search in STRING_SEARCHES:
         return f"{URL}{endpoint}/search/{search}/{resource_id}"
-    elif search in ID_SEARCHES:
+    elif search in ID_SEARCHES or (endpoint == "arcs" and 'id' in search and search != "id"):
         return f"{URL}{endpoint}/search/{search[:-3]}/{resource_id}"
     elif search in NO_SEARCH_ID_SEARCHES:
         return f"{URL}{endpoint}/{search[:-3]}/{resource_id}"
@@ -67,4 +67,4 @@ def convert_name(name):
 
 
 def pretty_print(data):
-    return json.dumps(data, indent=4)
+    return json.dumps(data, indent=4, ensure_ascii=False).encode("utf8").decode()
