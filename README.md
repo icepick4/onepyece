@@ -8,17 +8,18 @@
 [![forthebadge](https://forthebadge.com/images/badges/made-with-python.svg)](https://forthebadge.com)
 [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
 
-Python API wrapper for https://api-onepiece.com/
+Python API wrapper for https://api-onepiece.com/ \
 Thank's to this package you can simply get informations about One Piece characters, fruits, crews, etc.
 Learn more about possibilities in the [Usage](#usage) section.
-This package is still in development, so it may not be stable.
+This package is still in development and it's my very first python package, so it may not be stable.
 
 ## Installation
 
 There are several solutions :
 
+- Use this command ``pip install onepyece`` to get it from [PyPi](https://pypi.org/project/onepyece/)
 - Use this command ``pip install git+https://github.com/icepick4/onepyece`` to download it from this repo.
-- [⚠️COMING SOON] Download either the .zip or the tar.gz archive from the last release and then use this command `` pip install <path_to_archive> ``
+- Download either the .zip or the tar.gz archive from the last release and then use this command `` pip install <path_to_archive> ``
 
 ## Usage
 
