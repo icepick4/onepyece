@@ -25,6 +25,7 @@ ID_SEARCHES = ["crew_id", "captain_id"]
 NO_SEARCH_ID_SEARCHES = ["saga_id", "arc_id"]
 NO_RESOURCE_SEARCHES = ["count", "yonko"]
 
+
 def check_params(endpoint, search=None, resource_id=None):
     if endpoint not in ENDPOINTS:
         raise ValueError(f"Unknown API endpoint '{endpoint}'")
@@ -33,7 +34,7 @@ def check_params(endpoint, search=None, resource_id=None):
     if search is not None and search not in NO_RESOURCE_SEARCHES and resource_id is None:
         raise ValueError("Resource ID is required for this search")
     if resource_id is not None and not isinstance(resource_id, str):
-        raise ValueError("Resource ID must be a string")
+        raise ValueError("Resource ID must be a string, even if it's a number")
     return None
 
 

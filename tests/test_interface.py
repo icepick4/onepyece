@@ -29,7 +29,28 @@ class TestAPI(unittest.TestCase):
         self.assertIsInstance(api_object.results[0], dict)
         self.assertEqual(api_object.results[0]["french_name"], "Haki de l'Observation")
 
-    def test_count(self):
+    def test_count_implicit(self):
         api_object = interface.API("hakis")
         self.assertIsInstance(api_object, interface.API)
         self.assertEqual(api_object.count, 3)
+
+    def test_count_implicit_with_search(self):
+        api_object = interface.API("hakis", "name", "Haki")
+        self.assertIsInstance(api_object, interface.API)
+        self.assertEqual(api_object.count, 3)
+
+    def test_count_explicit(self):
+        api_object = interface.API("hakis", "count")
+        self.assertIsInstance(api_object, interface.API)
+        self.assertEqual(api_object.count, 3)
+
+    def test_iterate_object(self):
+        # Multiple results -> iterate
+        api_object = interface.API("crews")
+        self.assertIsInstance(api_object, interface.API)
+        for result in api_object:
+            self.assertIsInstance(result, dict)
+        # Unique result -> do not iterate
+        api_object = interface.API("crews", "id", "1")
+        self.assertIsInstance(api_object, interface.API)
+        self.assertRaises(TypeError, iter, api_object)

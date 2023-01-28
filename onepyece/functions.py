@@ -13,6 +13,10 @@ def episode_by_saga_id(resource_id):
     return API("episodes", "saga_id", resource_id)
 
 
+def episode_by_arc_id(resource_id):
+    return API("episodes", "arc_id", resource_id)
+
+
 def count_episodes():
     return API("episodes", "count")
 
@@ -247,6 +251,10 @@ def crew_by_name(resource_id):
 
 def crew_by_status(resource_id):
     return API("crews", "status", resource_id)
+
+
+def yonko_crews():
+    return API("crews", "yonko")
 
 
 def count_crews():

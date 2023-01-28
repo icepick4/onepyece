@@ -11,7 +11,7 @@ setuptools.setup(
     description="A package to use the One-Piece API : https://api-onepiece.com/",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/icepick4/one-pyece",
+    url="https://github.com/icepick4/onepyece",
     project_urls={
         "Bug Tracker": "package issues URL",
     },

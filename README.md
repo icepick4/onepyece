@@ -8,7 +8,7 @@ This package is still in development, so it may not be stable.
 
 There are several solutions :
 
-- Use this command ``pip install git+https://github.com/icepick4/one-pyece`` to download it from this repo.
+- Use this command ``pip install git+https://github.com/icepick4/onepyece`` to download it from this repo.
 - [⚠️COMING SOON] Download either the .zip or the tar.gz archive from the last release and then use this command `` pip install <path_to_archive> ``
 
 ## Usage
