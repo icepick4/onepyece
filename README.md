@@ -1,4 +1,13 @@
 # One Pyece
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/onepyece)
+![PyPI](https://img.shields.io/pypi/v/onepyece)
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/icepick4/onepyece/python-package.yml)
+![PyPI - License](https://img.shields.io/pypi/l/onepyece)
+![GitHub last commit](https://img.shields.io/github/last-commit/icepick4/onepyece)
+
+[![forthebadge](https://forthebadge.com/images/badges/made-with-python.svg)](https://forthebadge.com)
+[![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
+
 Python API wrapper for https://api-onepiece.com/
 Thank's to this package you can simply get informations about One Piece characters, fruits, crews, etc.
 Learn more about possibilities in the [Usage](#usage) section.
