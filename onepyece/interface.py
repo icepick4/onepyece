@@ -28,10 +28,14 @@ class API:
         raise TypeError(f"Object of type {type(self)} is not iterable")
 
     def __getitem__(self, item):
-        return self.results[item]
+        if getattr(self, "results", None) is not None:
+            return self.results[item]
+        raise TypeError(f"Object of type {type(self)} has no __getitem__ for unique result")
 
     def __len__(self):
-        return self.count if getattr(self, "count", None) is not None else 0
+        if getattr(self, "count", None) is not None:
+            return self.count
+        raise TypeError(f"Object of type {type(self)} has no len() for unique result")
 
     def load(self):
         api_data = get_data(self.url)
