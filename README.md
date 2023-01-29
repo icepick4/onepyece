@@ -41,11 +41,20 @@ https://api.api-onepiece.com/fruits/count
 149
 ```
 
-To get more basics functions visit that [file](onepyece/functions.py) which contains them, otherwise you can simply create API objects.
+To learn more about the possibilities, you can check the [examples](docs/examples.py).
 
 ## Tests
 
 You can test the application by running ``python -m tests``
 
+## Contributing
 
+Pull requests are welcome. Do not hesitate to open an issue if you have any problem or suggestion.
 
+## License
+
+This project is under the MIT License.
+
+## Author
+
+<a href="https://github.com/icepick4"><img src="https://avatars.githubusercontent.com/u/82316285?v=4" width="100px;" alt="Remi Jara"/><br /><sub><b>Remi Jara</b></sub></a>

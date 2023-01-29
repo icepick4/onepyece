@@ -27,7 +27,7 @@ class API:
 
     def __str__(self):
         if getattr(self, "count", None) is not None:
-            return f"Total {self.endpoint} found for this search: {self.count}.\nTo see the results, iterate over the object."
+            return f"Total {self.endpoint} found for this search: {self.count}."
         return pretty_print(self.__dict__)
 
     def __iter__(self):
