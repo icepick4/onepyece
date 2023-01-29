@@ -53,6 +53,14 @@ def chapter_by_title(resource):
     return API("chapters", "title", resource)
 
 
+def chapter_by_tome_id(resource):
+    return API("chapters", "tome_id", resource)
+
+
+def chapter_by_tome(resource):
+    return API("chapters", "tome", resource)
+
+
 def count_chapters():
     return API("chapters", "count")
 
@@ -127,6 +135,14 @@ def character_by_status(resource):
 
 def character_by_size(resource):
     return API("characters", "size", resource)
+
+
+def character_by_crew_id(resource):
+    return API("characters", "crew_id", resource)
+
+
+def character_by_fruit_id(resource):
+    return API("characters", "fruit_id", resource)
 
 
 def count_characters():
