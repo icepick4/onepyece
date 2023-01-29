@@ -8,7 +8,7 @@ class TestBuildURL(unittest.TestCase):
         url = common.build_url(endpoint)
         self.assertEqual(url, "https://api.api-onepiece.com/characters")
 
-    def test_url_with_search(self, endpoint="characters", search="id", resource="1"):
+    def test_url_with_search(self, endpoint="characters", search="id", resource=1):
         url = common.build_url(endpoint, search, resource)
         self.assertEqual(url, "https://api.api-onepiece.com/characters/1")
 
@@ -32,7 +32,7 @@ class TestBuildURL(unittest.TestCase):
         url = common.build_url(endpoint, search, resource)
         self.assertEqual(url, "https://api.api-onepiece.com/episodes/search/Je%20suis%20Luffy%20!")
 
-    def test_url_search_other_id(self, endpoint="boats", search="crew_id", resource="1"):
+    def test_url_search_other_id(self, endpoint="boats", search="crew_id", resource=1):
         url = common.build_url(endpoint, search, resource)
         self.assertEqual(url, "https://api.api-onepiece.com/boats/search/crew/1")
 
@@ -51,19 +51,19 @@ class TestCheckParams(unittest.TestCase):
     def test_search_no_resource(self, endpoint="characters", search="id"):
         self.assertRaises(ValueError, common.check_params, endpoint, search)
 
-    def test_search_with_resource(self, endpoint="characters", search="id", resource="1"):
+    def test_search_with_resource(self, endpoint="characters", search="id", resource=1):
         self.assertEqual(common.check_params(endpoint, search, resource), None)
 
-    def test_search_with_wrong_value(self, endpoint="characters", search="wrong", resource="1"):
+    def test_search_with_wrong_value(self, endpoint="characters", search="wrong", resource=1):
         self.assertRaises(ValueError, common.check_params, endpoint, search, resource)
 
 
 class TestConvertName(unittest.TestCase):
-    def test_convert_name(self, name="Baggy / Le Clown"):
-        self.assertEqual(common.convert_name(name), "Baggy")
+    def test_convert_resource(self, name="Baggy / Le Clown"):
+        self.assertEqual(common.convert_resource(name), "Baggy")
 
-    def test_convert_name_with_space(self, name="Baggy / Le Clown "):
-        self.assertEqual(common.convert_name(name), "Baggy")
+    def test_convert_resource_with_space(self, name="Baggy / Le Clown "):
+        self.assertEqual(common.convert_resource(name), "Baggy")
 
 
 class TestEndpointsSearches(unittest.TestCase):
