@@ -2,7 +2,9 @@
 
 # One Pyece
 
-![OnePyece logo](https://raw.githubusercontent.com/icepick4/onepyece/main/docs/onepyece_logo.png)
+<img src="https://raw.githubusercontent.com/icepick4/onepyece/main/docs/onepyece_logo.png" width="200px"/>
+
+*Image generated with Midjourney.*
 
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/onepyece)
 ![PyPI](https://img.shields.io/pypi/v/onepyece)
@@ -17,15 +19,15 @@
 
 ## Description
 
-Python API wrapper for https://api-onepiece.com/ \
+Python **API wrapper** for https://api-onepiece.com/ \
 Thank's to this package you can simply get informations about One Piece characters, fruits, crews, etc. The datas provided by the API are in french only for the moment. \
 Learn more about possibilities in the [Usage](#usage) section. 
 
-⚠️ This package is still in development and it's my very first python package, so it may not be stable.
+⚠️*This package is still in development and it's my very first python package, so it may not be stable.*
 
 ## Installation
 
-There are several solutions :
+**There are several solutions :**
 
 - Use this command ``pip install onepyece`` to get it from [PyPi](https://pypi.org/project/onepyece/)
 - Use this command ``pip install git+https://github.com/icepick4/onepyece`` to download it from this repo.
@@ -52,7 +54,7 @@ https://api.api-onepiece.com/fruits/count
 ```
 
 To learn more about the possibilities, you can check the 
-detailed documentation [here](docs/) and more examples [here](docs/examples.py).
+detailed **documentation** [here](docs/) and more examples [here](docs/examples.py).
 
 ## Tests
 
