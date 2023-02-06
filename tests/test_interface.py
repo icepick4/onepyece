@@ -58,3 +58,21 @@ class TestAPI(unittest.TestCase):
     def test_recursive_dict(self):
         api_object = interface.API('hakis', 'characters_id', 1)
         self.assertIsInstance(api_object[0].characters.haki_character, interface.API)
+
+    def test_search_method(self):
+        api_object = interface.API('characters').search('job', 'capitaine')
+        self.assertEqual(api_object[1].french_name, 'Cavendish')
+
+    def test_search_method_with_search(self):
+        with self.assertRaises(ValueError):
+            interface.API('characters', 'count').search('job', 'capitaine')
+
+    def test_search_method_with_search_and_resource(self):
+        with self.assertRaises(ValueError):
+            interface.API('characters', 'status', 'décédé').search('job', 'capitaine')
+
+    def test_edit_resource(self):
+        api_object = interface.API('characters', 'name', 'luffy')
+        self.assertEqual(api_object.french_name, 'Monkey D Luffy')
+        api_object.edit_resource('zoro')
+        self.assertEqual(api_object.french_name, 'Roronoa Zoro')

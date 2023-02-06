@@ -72,6 +72,12 @@ class API:
             else:
                 self.__dict__[key] = value
 
-    def search(self, search=None, resource=None):
+    def search(self, search, resource=None):
         if self.search_term is None and self.resource is None:
-            pass
+            return API(self.endpoint, search, resource)
+        raise ValueError(f"You can't instantiate a search API object because you already have {self.search_term} as search and {self.resource} as resource")
+
+    def edit_resource(self, resource):
+        if self.search is None:
+            raise ValueError('You can\'t change the resource without search use the method search()')
+        self.__dict__ = API(self.endpoint, self.search_term, resource).__dict__
