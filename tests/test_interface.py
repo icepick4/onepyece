@@ -76,3 +76,12 @@ class TestAPI(unittest.TestCase):
         self.assertEqual(api_object.french_name, 'Monkey D Luffy')
         api_object.edit_resource('zoro')
         self.assertEqual(api_object.french_name, 'Roronoa Zoro')
+
+    def test_edit_resource_not_allowed(self):
+        api_object = interface.API('characters', 'count')
+        api_object_2 = interface.API('crews', 'yonko')
+        with self.assertRaises(ValueError):
+            api_object.edit_resource('zoro')
+        with self.assertRaises(ValueError):
+            api_object_2.edit_resource('zoro')
+        

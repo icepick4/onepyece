@@ -33,6 +33,8 @@ def check_params(endpoint, search=None, resource=None):
         raise ValueError(f"Unknown search '{search}' for endpoint '{endpoint}'")
     if search is not None and search not in NO_RESOURCE_SEARCHES and resource is None:
         raise ValueError("Resource is required for this search")
+    if search in [NO_RESOURCE_SEARCHES] and resource is not None:
+        raise ValueError("Resource is not required for this search")
     if resource is not None and "id" in search and not isinstance(resource, int):
         raise ValueError("Resource must be an integer for this search")
     return None
