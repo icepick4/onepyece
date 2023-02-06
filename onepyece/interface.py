@@ -71,3 +71,7 @@ class API:
                 self.__dict__[key] = API(object=True, data_object=value[0])
             else:
                 self.__dict__[key] = value
+
+    def search(self, search=None, resource=None):
+        if self.search_term is None and self.resource is None:
+            pass
