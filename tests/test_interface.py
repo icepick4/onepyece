@@ -54,3 +54,7 @@ class TestAPI(unittest.TestCase):
         api_object = interface.API("crews", "id", 1)
         self.assertIsInstance(api_object, interface.API)
         self.assertRaises(TypeError, iter, api_object)
+
+    def test_recursive_dict(self):
+        api_object = interface.API('hakis', 'characters_id', 1)
+        self.assertIsInstance(api_object[0].characters.haki_character, interface.API)

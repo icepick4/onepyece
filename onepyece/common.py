@@ -69,4 +69,8 @@ def convert_resource(resource):
 
 
 def pretty_print(data):
-    return json.dumps(data, indent=4, ensure_ascii=False).encode("utf8").decode()
+    def convert_to_dict(obj):
+        return obj.__dict__
+    
+    json_string = json.dumps(data, indent=4, ensure_ascii=False, default=convert_to_dict).encode("utf8").decode()
+    return json_string

@@ -1,35 +1,37 @@
+import json
+
 from .api import get_data
 from .common import build_url, pretty_print
 
 
 class API:
-    def __init__(self, endpoint=None, search=None, resource=None, object=False, data=None):
+    def __init__(self, endpoint=None, search_term=None, resource=None, object=False, data_object=None):
         self.endpoint = endpoint
-        self.search = search
+        self.search_term = search_term
         self.resource = resource
         self.object = object
         if endpoint is not None:
-            self.url = build_url(endpoint, search, resource)
+            self.url = build_url(endpoint, search_term, resource)
         if not object:
             self.__load()
         else:
-            self.__dict__.update(data)
+            self.update_dict_recursively(data_object)
 
 
     def __repr__(self):
         if self.object:
             return f"API(object={self.__dict__})"
         if self.resource is not None:
-            return f"API(endpoint='{self.endpoint}', search='{self.search}', resource='{self.resource}', url='{self.url}')"
-        if self.search is not None:
-            return f"API(endpoint='{self.endpoint}', search='{self.search}', url='{self.url}')"
+            return f"API(endpoint='{self.endpoint}', search='{self.search_term}', resource='{self.resource}', url='{self.url}')"
+        if self.search_term is not None:
+            return f"API(endpoint='{self.endpoint}', search='{self.search_term}', url='{self.url}')"
         return f"API(endpoint='{self.endpoint}', url='{self.url}')"
 
     def __str__(self):
         if getattr(self, "count", None) is not None:
             return f"Total {self.endpoint} found for this search: {self.count}."
         return pretty_print(self.__dict__)
-
+    
     def __iter__(self):
         if getattr(self, "results", None) is not None:
             return iter(self.results)
@@ -48,15 +50,24 @@ class API:
     def __load(self):
         api_data = get_data(self.url)
         if api_data is None:
-            raise ValueError(f"No data found for the given search:{self.search} and resource_id:{self.resource}")
+            raise ValueError(f"No data found for the given search:{self.search_term} and resource_id:{self.resource}")
         elif isinstance(api_data, list) and len(api_data) > 1:
-            self.results = [API(object=True, data=result) for result in api_data]
+            self.results = [API(object=True, data_object=result) for result in api_data]
             self.count = len(api_data)
         elif isinstance(api_data, list) and len(api_data) == 1:
             self.__dict__.update(api_data[0])
         elif isinstance(api_data, dict):
-            self.__dict__.update(api_data)
+            self.update_dict_recursively(api_data)
         elif isinstance(api_data, int):
             self.count = api_data
         else:
             raise ValueError(f"Unknown data type: {type(api_data)}")
+
+    def update_dict_recursively(self, data_object):
+        for key, value in data_object.items():
+            if isinstance(value, dict):
+                self.__dict__[key] = API(object=True, data_object=value)
+            elif isinstance(value, list):
+                self.__dict__[key] = API(object=True, data_object=value[0])
+            else:
+                self.__dict__[key] = value
