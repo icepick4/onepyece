@@ -84,4 +84,16 @@ class TestAPI(unittest.TestCase):
             api_object.edit_resource('zoro')
         with self.assertRaises(ValueError):
             api_object_2.edit_resource('zoro')
-        
+
+    def test_edit_resource_attributes(self):
+        api_object = interface.API('characters', 'name', 'luffy')
+        self.assertEqual(api_object.french_name, 'Monkey D Luffy')
+        self.assertEqual(api_object.url, 'https://api.api-onepiece.com/characters/search/name/luffy')
+        api_object.edit_resource('zoro')
+        self.assertEqual(api_object.french_name, 'Roronoa Zoro')
+        self.assertEqual(api_object.url, 'https://api.api-onepiece.com/characters/search/name/zoro')
+
+    def test_edit_resource_with_wrong_resource(self):
+        api_object = interface.API('characters', 'name', 'luffy')
+        with self.assertRaises(ValueError):
+            api_object.edit_resource('wrong')

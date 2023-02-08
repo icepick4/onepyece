@@ -16,7 +16,7 @@ __all__ = [
     "chapter_by_title",
     "count_chapters",
     "arc_by_id",
-    # "arc_by_title",
+    "arc_by_title",
     "arc_by_saga_id",
     "count_arcs",
     "saga_by_id",

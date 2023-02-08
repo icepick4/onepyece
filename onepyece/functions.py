@@ -68,9 +68,9 @@ def count_chapters():
 def arc_by_id(resource):
     return API("arcs", "id", resource)
 
-# This functions is not working because the API link is not working
-# def arc_by_title(resource):
-#     return API("arcs", "title", resource)
+
+def arc_by_title(resource):
+    return API("arcs", "title", resource)
 
 
 def arc_by_saga_id(resource):

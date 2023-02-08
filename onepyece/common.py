@@ -6,7 +6,7 @@ ENDPOINTS = {
     "movies": ["id", "count", "title"],
     "tomes": ["id", "count", "title"],
     "chapters": ["id", "count", "title", "tome_id"],
-    "arcs": ["id", "count", "saga_id"],
+    "arcs": ["id", "count", "title", "saga_id"],
     "sagas": ["id", "count", "title"],
     "hakis": ["id", "count", "name", "roman_name", "characters_id"],
     "characters": ["id", "count", "name", "job", "bounty", "status", "size", "crew_id", "fruit_id"],
@@ -51,7 +51,8 @@ def build_url(endpoint, search=None, resource=None):
 
 
 def adding_search(endpoint, search, resource=None):
-    if search in STRING_SEARCHES:
+    # This is a special case cause the API endpoints are weird
+    if search in STRING_SEARCHES or search == "title" and endpoint == "arcs": 
         return f"{URL}{endpoint}/search/{search}/{resource}"
     elif search in NO_SEARCH_ID_SEARCHES and endpoint not in ['boats', 'arcs']:
         return f"{URL}{endpoint}/{search[:-3]}/{resource}"
