@@ -46,11 +46,12 @@ Learn more about possibilities in the [Usage](#usage) section.
 >>> nb_fruits.url
 https://api.api-onepiece.com/fruits/count
 >>> crews = op.API('crews') # List of all the crews in dict form as you can see below
->>> crews.results[0]
-{'id': 1, 'french_name': 'L’équipage du Chapeau de Paille', 'roman_name': 'Mugiwara no Ichimi', 'description': '', 'total_prime': 
-'3.161.000.100', 'number': '10', 'status': 'actif', 'isYonko': True, 'affiliation': ''}
+>>> crews[0]
+API(object={'endpoint': None, 'search_term': None, 'resource': None, 'object': True, 'id': 1, 'french_name': 'L’équipage du Chapeau de Paille', 'roman_name': 'Mugiwara no Ichimi', 'description': '', 'total_prime': '3.161.000.100', 'number': '10', 'status': 'actif', 'isYonko': True, 'affiliation': ''})
 >>> crews.count # You can implicitly get the count of an endpoint by getting the whole list of it.
 149
+>>>crews[1].french_name
+'L’équipage du Roux'
 ```
 
 To learn more about the possibilities, you can check the 

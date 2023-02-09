@@ -17,6 +17,14 @@ def episode_by_arc_id(resource):
     return API("episodes", "arc_id", resource)
 
 
+def episode_by_arc_title(resource):
+    return API("episodes", "arc_title", resource)
+
+
+def episode_by_saga_title(resource):
+    return API("episodes", "saga_title", resource)
+
+
 def count_episodes():
     return API("episodes", "count")
 

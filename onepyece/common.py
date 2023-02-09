@@ -2,7 +2,7 @@ import json
 
 URL = "https://api.api-onepiece.com/"
 ENDPOINTS = {
-    "episodes": ["id", "count", "title", "saga_id", "arc_id"],
+    "episodes": ["id", "count", "title", "saga_id", "arc_id", "arc_title", "saga_title"],
     "movies": ["id", "count", "title"],
     "tomes": ["id", "count", "title"],
     "chapters": ["id", "count", "title", "tome_id"],
@@ -51,7 +51,7 @@ def build_url(endpoint, search=None, resource=None):
 
 
 def adding_search(endpoint, search, resource=None):
-    # This is a special case cause the API endpoints are weird
+    # There are specials cases cause the API endpoints are weird
     if search in STRING_SEARCHES or search == "title" and endpoint == "arcs": 
         return f"{URL}{endpoint}/search/{search}/{resource}"
     elif search in NO_SEARCH_ID_SEARCHES and endpoint not in ['boats', 'arcs']:
@@ -60,12 +60,15 @@ def adding_search(endpoint, search, resource=None):
         return f"{URL}{endpoint}/search/{search[:-3]}/{resource}"
     elif search == "title":
         return f"{URL}{endpoint}/search/{resource}"
+    elif "title" in search:
+        return f"{URL}{endpoint}/{search[:-6]}/search/{resource}"
     return f"{URL}{endpoint}/{resource}"
 
 
 def convert_resource(resource):
     if isinstance(resource, int):
         return resource
+    # If the character name contains a slash, we only want the first part
     if ' / ' in resource:
         resource = resource.split(" / ")[0]
     return resource.replace(" ", "%20")
