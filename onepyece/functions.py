@@ -1,3 +1,6 @@
+"""
+One Piece API wrapper (french data)
+"""
 from .interface import API
 
 
