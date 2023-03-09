@@ -1,5 +1,3 @@
-import json
-
 from .api import get_data
 from .common import build_url, pretty_print
 
@@ -17,7 +15,6 @@ class API:
         else:
             self.update_dict_recursively(data_object)
 
-
     def __repr__(self):
         if self.object:
             return f"API(object={self.__dict__})"
@@ -31,7 +28,7 @@ class API:
         if getattr(self, "count", None) is not None:
             return f"Total {self.endpoint} found for this search: {self.count}."
         return pretty_print(self.__dict__)
-    
+
     def __iter__(self):
         if getattr(self, "results", None) is not None:
             return iter(self.results)
@@ -75,9 +72,10 @@ class API:
     def search(self, search, resource=None):
         if self.search_term is None and self.resource is None:
             return API(self.endpoint, search, resource)
-        raise ValueError(f"You can't instantiate a search API object because you already have {self.search_term} as search and {self.resource} as resource")
+        raise ValueError(
+            f"You can't instantiate a search API object because you already have {self.search_term} as search and {self.resource} as resource")
 
     def edit_resource(self, resource):
         if self.search is None:
-            raise ValueError('You can\'t change the resource without search use the method search()')
+            raise ValueError('You can\'t change the resource without search use the method search() first')
         self.__dict__ = API(self.endpoint, self.search_term, resource).__dict__
