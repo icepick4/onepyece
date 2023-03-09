@@ -127,4 +127,5 @@ class API:
             raise ValueError('You can\'t change the resource without'
                              ' search use the method search() first'
                              )
-        self.__dict__ = API(self.endpoint, self.search_term, resource).__dict__
+        temp_api = API(self.endpoint, self.search_term, resource)
+        self.__dict__.update(temp_api.__dict__)
