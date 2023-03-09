@@ -1,3 +1,6 @@
+"""
+Common functions for the API
+"""
 import json
 
 URL = "https://api.api-onepiece.com/"
@@ -20,13 +23,29 @@ ENDPOINTS = {
     "crews": ["id", "count", "name", "status", "yonko"],
 }
 
-STRING_SEARCHES = ["name", "job", "bounty", "status", "size", "type", "roman_name", "sea", "affiliation"]
+STRING_SEARCHES = ["name", "job", "bounty", "status", "size",
+                   "type", "roman_name", "sea", "affiliation"]
 ID_SEARCHES = ["crew_id", "captain_id"]
-NO_SEARCH_ID_SEARCHES = ["saga_id", "arc_id", "characters_id", "gear_id", "tome_id", "fruit_id", "crew_id"]
+NO_SEARCH_ID_SEARCHES = ["saga_id", "arc_id", "characters_id",
+                         "gear_id", "tome_id", "fruit_id", "crew_id"]
 NO_RESOURCE_SEARCHES = ["count", "yonko"]
 
 
 def check_params(endpoint, search=None, resource=None):
+    """
+    Check if the parameters are valid for the API
+
+    :param endpoint: The endpoint to check
+    :param search: The search to check
+    :param resource: The resource to check
+
+    See ENDPOINTS in common.py for more information
+
+    This function is supposed to be used only by build_url
+
+    :return: None if the parameters are valid
+    :raises ValueError: If the parameters are not valid
+    """
     if endpoint not in ENDPOINTS:
         raise ValueError(f"Unknown API endpoint '{endpoint}'")
     if search is not None and search not in ENDPOINTS[endpoint]:
@@ -37,10 +56,20 @@ def check_params(endpoint, search=None, resource=None):
         raise ValueError("Resource is not required for this search")
     if resource is not None and "id" in search and not isinstance(resource, int):
         raise ValueError("Resource must be an integer for this search")
-    return None
 
 
 def build_url(endpoint, search=None, resource=None):
+    """
+    Build the url for the API
+
+    :param endpoint: The endpoint to build the url for
+    :param search: The search to build the url for
+    :param resource: The resource to build the url for
+
+    See ENDPOINTS in common.py for more information
+
+    :return: The url for the API
+    """
     check_params(endpoint, search, resource)
     if search is not None:
         if resource is not None:
@@ -51,21 +80,42 @@ def build_url(endpoint, search=None, resource=None):
 
 
 def adding_search(endpoint, search, resource=None):
+    """
+    Add the search to the url
+
+    See https://api-onepiece.com/documentation for more information about URL
+
+    This functions is supposed to be used only by build_url
+
+    :param endpoint: The endpoint to add the search to
+    :param search: The search to add
+    :param resource: The resource to add
+
+    :return: The url with the search added
+    """
     # There are specials cases cause the API endpoints are weird
-    if search in STRING_SEARCHES or search == "title" and endpoint == "arcs": 
+    if search in STRING_SEARCHES or search == "title" and endpoint == "arcs":
         return f"{URL}{endpoint}/search/{search}/{resource}"
-    elif search in NO_SEARCH_ID_SEARCHES and endpoint not in ['boats', 'arcs']:
+    if search in NO_SEARCH_ID_SEARCHES and endpoint not in ['boats', 'arcs']:
         return f"{URL}{endpoint}/{search[:-3]}/{resource}"
-    elif search in ID_SEARCHES:
+    if search in ID_SEARCHES:
         return f"{URL}{endpoint}/search/{search[:-3]}/{resource}"
-    elif search == "title":
+    if search == "title":
         return f"{URL}{endpoint}/search/{resource}"
-    elif "title" in search:
+    if "title" in search:
         return f"{URL}{endpoint}/{search[:-6]}/search/{resource}"
     return f"{URL}{endpoint}/{resource}"
 
 
 def convert_resource(resource):
+    """
+    Convert the resource to a valid url for exceptions
+
+    This function is supposed to be used only by build_url
+
+    :param resource: The resource to convert
+    :return: The converted resource
+    """
     if isinstance(resource, int):
         return resource
     # If the character name contains a slash, we only want the first part
@@ -75,8 +125,15 @@ def convert_resource(resource):
 
 
 def pretty_print(data):
+    """
+    Pretty print the data
+    """
     def convert_to_dict(obj):
         return obj.__dict__
-    
-    json_string = json.dumps(data, indent=4, ensure_ascii=False, default=convert_to_dict).encode("utf8").decode()
+
+    json_string = json.dumps(
+        data,
+        indent=4,
+        ensure_ascii=False,
+        default=convert_to_dict).encode("utf8").decode()
     return json_string

@@ -15,7 +15,7 @@ luffy = op.character_by_id(1)
 print(f"{luffy.french_name} : {luffy.job}")
 
 # Get locates by a search term
-# Note that all functions with "by_name" in their name 
+# Note that all functions with "by_name" in their name
 # return a list if the search term is not precise
 locates = op.locate_by_name("Archipel")
 
@@ -31,10 +31,3 @@ print(len(op.character_by_crew_id(1)))
 
 # Get explicit count of all fruits
 print(op.count_fruits())
-
-
-
-
-
-
-
