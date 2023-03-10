@@ -15,4 +15,5 @@ class TestFunctions(unittest.TestCase):
                     function_name = f"{current_endpoint}_by_{search}"
                 else:
                     function_name = f"{search}_{current_endpoint}s"
+
                 self.assertTrue(hasattr(functions, function_name))
