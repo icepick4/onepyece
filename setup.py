@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as file:
 
 setuptools.setup(
     name="onepyece",
-    version="1.3.0",
+    version="1.3.1",
     author="Rémi JARA",
     author_email="remi.jara4@gmail.com",
     description="A package to use the One-Piece API : https://api-onepiece.com/",
