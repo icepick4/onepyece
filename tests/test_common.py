@@ -42,6 +42,7 @@ class TestCheckParams(unittest.TestCase):
     The None value is returned if the parameters are valid
     The ValueError is raised if the parameters are not valid
     """
+
     def test_endpoint(self, endpoint="characters"):
         self.assertEqual(common.check_params(endpoint), None)
 

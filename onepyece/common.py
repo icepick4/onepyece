@@ -104,7 +104,9 @@ def adding_search(endpoint, search, resource=None):
         return f"{URL}{endpoint}/search/{resource}"
     if "title" in search:
         return f"{URL}{endpoint}/{search[:-6]}/search/{resource}"
-    return f"{URL}{endpoint}/{search}/{resource}"
+    if search == "destroy":
+        return f"{URL}{endpoint}/{search}/{resource}"
+    return f"{URL}{endpoint}/{resource}"
 
 
 def convert_resource(resource):
