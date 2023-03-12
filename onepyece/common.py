@@ -18,7 +18,7 @@ ENDPOINTS = {
     "luffy/techniques": ["id", "count", "name", "translation", "gear_id"],
     "locates": ["id", "count", "name", "sea", "affiliation"],
     "fruits": ["id", "count", "type"],
-    "swords": ["id", "count", "name"],
+    "swords": ["id", "count", "name", "destroy"],
     "boats": ["id", "count", "name", "type", "crew_id", "captain_id"],
     "crews": ["id", "count", "name", "status", "yonko"],
 }
@@ -104,7 +104,7 @@ def adding_search(endpoint, search, resource=None):
         return f"{URL}{endpoint}/search/{resource}"
     if "title" in search:
         return f"{URL}{endpoint}/{search[:-6]}/search/{resource}"
-    return f"{URL}{endpoint}/{resource}"
+    return f"{URL}{endpoint}/{search}/{resource}"
 
 
 def convert_resource(resource):

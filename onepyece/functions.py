@@ -735,13 +735,25 @@ def sword_by_name(resource):
     return API("swords", "name", resource)
 
 
+def sword_by_destroy(resource):
+    """
+    Get sword by type
+
+    See https://api-onepiece.com/documentation/8-sword for more information
+
+    :param resource: type of the sword (int) (1 = is destroyed, 0 = is not destroyed)
+    :return: API list object (with swords matching the type search)
+    """
+    return API("swords", "destroy", resource)
+
+
 def count_swords():
     """
     Get count of swords
 
-    See https://api-onepiece.com/documentation/8-sword for more information
+    See https: // api - onepiece.com / documentation / 8 - sword for more information
 
-    :return: API unique object (with the count of swords)
+    : return: API unique object(with the count of swords)
     """
     return API("swords", "count")
 
@@ -750,10 +762,10 @@ def boat_by_id(resource):
     """
     Get boat by id
 
-    See https://api-onepiece.com/documentation/14-boat for more information
+    See https: // api - onepiece.com / documentation / 14 - boat for more information
 
-    :param resource: id of the boat (int)
-    :return: API unique object
+    : param resource: id of the boat(int)
+    : return: API unique object
     """
     return API("boats", "id", resource)
 
@@ -762,10 +774,10 @@ def boat_by_name(resource):
     """
     Get boat by name
 
-    See https://api-onepiece.com/documentation/14-boat for more information
+    See https: // api - onepiece.com / documentation / 14 - boat for more information
 
-    :param resource: name of the boat (str)
-    :return: API list object (with boats matching the name search)
+    : param resource: name of the boat(str)
+    : return: API list object(with boats matching the name search)
     """
     return API("boats", "name", resource)
 
@@ -774,10 +786,10 @@ def boat_by_type(resource):
     """
     Get boat by type
 
-    See https://api-onepiece.com/documentation/14-boat for more information
+    See https: // api - onepiece.com / documentation / 14 - boat for more information
 
-    :param resource: type of the boat (str) (pirate, gouvernement)
-    :return: API list object (with boats matching the type search)
+    : param resource: type of the boat(str)(pirate, gouvernement)
+    : return: API list object(with boats matching the type search)
     """
     return API("boats", "type", resource)
 
@@ -786,10 +798,10 @@ def boat_by_crew_id(resource):
     """
     Get boat by crew id
 
-    See https://api-onepiece.com/documentation/14-boat for more information
+    See https: // api - onepiece.com / documentation / 14 - boat for more information
 
-    :param resource: crew id of the boat (int)
-    :return: API list object (with boats matching the crew id search)
+    : param resource: crew id of the boat(int)
+    : return: API list object(with boats matching the crew id search)
     """
     return API("boats", "crew_id", resource)
 
@@ -798,10 +810,10 @@ def boat_by_captain_id(resource):
     """
     Get boat by captain id
 
-    See https://api-onepiece.com/documentation/14-boat for more information
+    See https: // api - onepiece.com / documentation / 14 - boat for more information
 
-    :param resource: captain id of the boat (int)
-    :return: API list object (with boats matching the captain id search)
+    : param resource: captain id of the boat(int)
+    : return: API list object(with boats matching the captain id search)
     """
     return API("boats", "captain_id", resource)
 
@@ -810,9 +822,9 @@ def count_boats():
     """
     Get count of boats
 
-    See https://api-onepiece.com/documentation/14-boat for more information
+    See https: // api - onepiece.com / documentation / 14 - boat for more information
 
-    :return: API unique object (with the count of boats)
+    : return: API unique object(with the count of boats)
     """
     return API("boats", "count")
 
@@ -821,10 +833,10 @@ def crew_by_id(resource):
     """
     Get crew by id
 
-    See https://api-onepiece.com/documentation/12-crew for more information
+    See https: // api - onepiece.com / documentation / 12 - crew for more information
 
-    :param resource: id of the crew (int)
-    :return: API unique object
+    : param resource: id of the crew(int)
+    : return: API unique object
     """
     return API("crews", "id", resource)
 
@@ -833,10 +845,10 @@ def crew_by_name(resource):
     """
     Get crew by name
 
-    See https://api-onepiece.com/documentation/12-crew for more information
+    See https: // api - onepiece.com / documentation / 12 - crew for more information
 
-    :param resource: name of the crew (str)
-    :return: API list object (with crews matching the name search)
+    : param resource: name of the crew(str)
+    : return: API list object(with crews matching the name search)
     """
     return API("crews", "name", resource)
 
@@ -845,10 +857,10 @@ def crew_by_status(resource):
     """
     Get crew by status
 
-    See https://api-onepiece.com/documentation/12-crew for more information
+    See https: // api - onepiece.com / documentation / 12 - crew for more information
 
-    :param resource: status of the crew (str) (inconnu, actif, inactif)
-    :return: API list object (with crews matching the status search)
+    : param resource: status of the crew(str)(inconnu, actif, inactif)
+    : return: API list object(with crews matching the status search)
     """
     return API("crews", "status", resource)
 
@@ -857,9 +869,9 @@ def yonko_crews():
     """
     Get yonko crews
 
-    See https://api-onepiece.com/documentation/12-crew for more information
+    See https: // api - onepiece.com / documentation / 12 - crew for more information
 
-    :return: API list object (with crews which are yonko)
+    : return: API list object(with crews which are yonko)
     """
     return API("crews", "yonko")
 
@@ -868,8 +880,8 @@ def count_crews():
     """
     Get count of crews
 
-    See https://api-onepiece.com/documentation/12-crew for more information
+    See https: // api - onepiece.com / documentation / 12 - crew for more information
 
-    :return: API unique object (with the count of crews)
+    : return: API unique object(with the count of crews)
     """
     return API("crews", "count")
