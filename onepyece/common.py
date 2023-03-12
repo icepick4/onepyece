@@ -93,19 +93,27 @@ def adding_search(endpoint, search, resource=None):
 
     :return: The url with the search added
     """
-    # There are specials cases cause the API endpoints are weird
-    if search in STRING_SEARCHES or search == "title" and endpoint == "arcs":
-        return f"{URL}{endpoint}/search/{search}/{resource}"
+    # there are some exceptions to the rule because of the API
+    if search in STRING_SEARCHES or (search == "title" and endpoint == "arcs"):
+        search_value = "title" if search == "title" else search
+        return f"{URL}{endpoint}/search/{search_value}/{resource}"
+
     if search in NO_SEARCH_ID_SEARCHES and endpoint not in ['boats', 'arcs']:
-        return f"{URL}{endpoint}/{search[:-3]}/{resource}"
+        return f"{URL}{endpoint}/{search[:-3]}/{resource}/"
+
     if search in ID_SEARCHES:
         return f"{URL}{endpoint}/search/{search[:-3]}/{resource}"
-    if search == "title":
-        return f"{URL}{endpoint}/search/{resource}"
+
     if "title" in search:
-        return f"{URL}{endpoint}/{search[:-6]}/search/{resource}"
+        return (
+            f"{URL}{endpoint}/search/{resource}"
+            if search == "title" else
+            f"{URL}{endpoint}/{search[:-6]}/search/{resource}"
+        )
+
     if search == "destroy":
         return f"{URL}{endpoint}/{search}/{resource}"
+
     return f"{URL}{endpoint}/{resource}"
 
 
