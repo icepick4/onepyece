@@ -2,7 +2,7 @@
 Mother class of the API wrapper
 """
 from .api import get_data
-from .common import build_url, pretty_print
+from .common import build_url, pretty_print, AUTHORIZED_LANGS
 
 
 class API:
@@ -20,12 +20,15 @@ class API:
     See https://api-onepiece.com/documentation for more information about URL
     """
 
-    def __init__(self, endpoint=None, search_term=None, resource=None, data=None):
-        self.endpoint = endpoint
+    def __init__(self, endpoint=None, search_term=None, resource=None, data=None, lang="en"):
+        if lang not in AUTHORIZED_LANGS:
+            raise ValueError(f"Unknown language '{lang}', authorized languages are {AUTHORIZED_LANGS}")
+        self.endpoint = f"{endpoint}/{lang}" if endpoint is not None else f"{endpoint}/en"
         self.search_term = search_term
         self.resource = resource
+
         if self.endpoint is not None:
-            self.url = build_url(endpoint, search_term, resource)
+            self.url = build_url(self.endpoint, self.search_term, self.resource)
         if data is None:
             self.__load()
         else:

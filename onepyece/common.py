@@ -3,7 +3,7 @@ Common functions for the API
 """
 import json
 
-URL = "https://api.api-onepiece.com/"
+URL = "https://api.api-onepiece.com/v2/"
 ENDPOINTS = {
     "episodes": ["id", "count", "title", "saga_id", "arc_id", "arc_title", "saga_title"],
     "movies": ["id", "count", "title"],
@@ -30,6 +30,8 @@ NO_SEARCH_ID_SEARCHES = ["saga_id", "arc_id", "characters_id",
                          "gear_id", "tome_id", "fruit_id", "crew_id"]
 NO_RESOURCE_SEARCHES = ["count", "yonko"]
 
+AUTHORIZED_LANGS = ['fr', 'en']
+
 
 def check_params(endpoint, search=None, resource=None):
     """
@@ -46,10 +48,10 @@ def check_params(endpoint, search=None, resource=None):
     :return: None if the parameters are valid
     :raises ValueError: If the parameters are not valid
     """
-    if endpoint not in ENDPOINTS:
-        raise ValueError(f"Unknown API endpoint '{endpoint}'")
+    if endpoint.split('/')[0] not in ENDPOINTS:
+        raise ValueError(f"Unknown API endpoint '{endpoint}', authorized endpoints are {[key for key in ENDPOINTS]}")
     if search is not None and search not in ENDPOINTS[endpoint]:
-        raise ValueError(f"Unknown search '{search}' for endpoint '{endpoint}'")
+        raise ValueError(f"Unknown search '{search}' for endpoint '{endpoint}', authorized searches are {[key for key in ENDPOINTS[endpoint]]}")
     if search is not None and search not in NO_RESOURCE_SEARCHES and resource is None:
         raise ValueError("Resource is required for this search")
     if search in [NO_RESOURCE_SEARCHES] and resource is not None:
