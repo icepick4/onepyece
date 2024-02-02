@@ -25,6 +25,10 @@ Learn more about possibilities in the [Usage](#usage) section.
 
 ⚠️*This package is still in development and it's my very first python package, so it may not be stable.*
 
+## What's New in v2.0
+
+**Multilanguage Support:** One Pyece now supports multiple languages! Starting from version 2.0, you can generate an \`API\` object with a language parameter, making it possible to fetch data in either French or English. English is the default language if the parameter is not set. This enhancement aims to make our API more accessible and user-friendly for our international audience.
+
 ## Installation
 
 **There are several solutions :**
