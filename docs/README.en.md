@@ -6,7 +6,7 @@ Voir [version française](/docs/README.fr.md)
 
 ## List of All API Endpoints
 
-To see all the API endpoints, refer to the official documentation: \[API Documentation\]\(https://api-onepiece.com/documentation\).
+To see all the API endpoints, refer to the official documentation: [API Documentation](https://api-onepiece.com/documentation).
 Not all endpoints are necessarily implemented in this package. For example, all "count" sub-endpoints are implicitly implemented in the main endpoints. For a better understanding, refer to this [exemple](examples.py).
 To see all the endpoints implemented in this package, refer to this file: `functions.py` (Note that this file only contains endpoints involving searches).
 
