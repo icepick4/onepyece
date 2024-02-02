@@ -18,16 +18,15 @@ ENDPOINTS = {
     "luffy/techniques": ["id", "count", "name", "translation", "gear_id"],
     "locates": ["id", "count", "name", "sea", "affiliation"],
     "fruits": ["id", "count", "type"],
-    "swords": ["id", "count", "name", "destroy"],
+    "swords": ["id", "count", "name", "type", "state"],
     "boats": ["id", "count", "name", "type", "crew_id", "captain_id"],
     "crews": ["id", "count", "name", "status", "yonko"],
 }
 
 STRING_SEARCHES = ["name", "job", "bounty", "status", "size",
-                   "type", "roman_name", "sea", "affiliation"]
-ID_SEARCHES = ["crew_id", "captain_id"]
-NO_SEARCH_ID_SEARCHES = ["saga_id", "arc_id", "characters_id",
-                         "gear_id", "tome_id", "fruit_id", "crew_id"]
+                   "type", "roman_name", "sea", "affiliation", "title"]
+ID_SEARCHES = ["saga_id", "arc_id", "characters_id",
+                "gear_id", "tome_id", "fruit_id", "crew_id", "crew_id", "captain_id"]
 NO_RESOURCE_SEARCHES = ["count", "yonko"]
 
 AUTHORIZED_LANGS = ['fr', 'en']
@@ -48,10 +47,11 @@ def check_params(endpoint, search=None, resource=None):
     :return: None if the parameters are valid
     :raises ValueError: If the parameters are not valid
     """
-    if endpoint.split('/')[0] not in ENDPOINTS:
-        raise ValueError(f"Unknown API endpoint '{endpoint}', authorized endpoints are {[key for key in ENDPOINTS]}")
-    if search is not None and search not in ENDPOINTS[endpoint]:
-        raise ValueError(f"Unknown search '{search}' for endpoint '{endpoint}', authorized searches are {[key for key in ENDPOINTS[endpoint]]}")
+    endpoint_no_lang = endpoint.split('/')[0]
+    if endpoint_no_lang not in ENDPOINTS:
+        raise ValueError(f"Unknown API endpoint '{endpoint_no_lang}', authorized endpoints are {[key for key in ENDPOINTS]}")
+    if search is not None and search not in ENDPOINTS[endpoint_no_lang]:
+        raise ValueError(f"Unknown search '{search}' for endpoint '{endpoint_no_lang}', authorized searches are {[key for key in ENDPOINTS[endpoint_no_lang]]}")
     if search is not None and search not in NO_RESOURCE_SEARCHES and resource is None:
         raise ValueError("Resource is required for this search")
     if search in [NO_RESOURCE_SEARCHES] and resource is not None:
@@ -96,25 +96,11 @@ def adding_search(endpoint, search, resource=None):
     :return: The url with the search added
     """
     # there are some exceptions to the rule because of the API
-    if search in STRING_SEARCHES or (search == "title" and endpoint == "arcs"):
-        search_value = "title" if search == "title" else search
-        return f"{URL}{endpoint}/search/{search_value}/{resource}"
-
-    if search in NO_SEARCH_ID_SEARCHES and endpoint not in ['boats', 'arcs']:
-        return f"{URL}{endpoint}/{search[:-3]}/{resource}/"
+    if search in STRING_SEARCHES:
+        return f"{URL}{endpoint}/search/?{search}={resource}"
 
     if search in ID_SEARCHES:
-        return f"{URL}{endpoint}/search/{search[:-3]}/{resource}"
-
-    if "title" in search:
-        return (
-            f"{URL}{endpoint}/search/{resource}"
-            if search == "title" else
-            f"{URL}{endpoint}/{search[:-6]}/search/{resource}"
-        )
-
-    if search == "destroy":
-        return f"{URL}{endpoint}/{search}/{resource}"
+        return f"{URL}{endpoint}/{search[:-3]}/{resource}/"
 
     return f"{URL}{endpoint}/{resource}"
 
