@@ -1,8 +1,8 @@
 # Onepyece documentation
 
-This documentation is inspired by the offical one : [Documentation API](https://api-onepiece.com/documentation).
-Cette documentation est écrite en français car les données de l'API sont en français.
-This documentation is written in french because the API data are in french.
+Cette documentation est inspiré de la documentation de l'API utilisé par OnePyece : [Documentation API](https://api-onepiece.com/documentation).
+
+See [english version](/?tab=readme-ov-file#one-pyece)
 
 ## Liste des tous les points d'accès de l'API
 
@@ -20,9 +20,10 @@ Cette classe peut prendre 3 paramètres :
 
 1. Endpoint (obligatoire)
 2. Search (facultatif)
-3. Resource (facultatif ou obligatoire selon la recherche)
+3. Language (facultatif, par défaut "en")
+4. Resource (facultatif ou obligatoire selon la recherche)
 
-Si vous voulez faire une recherche, vous devez spécifier le paramètre "search" (en plus du paramètre "endpoint" évidemment) et le paramètre "resource" est obligatoire dans la plupart des cas. Si vous voulez récupérer toutes les données d'un point d'accès, vous devez spécifier uniquement le paramètre "endpoint".
+Si vous voulez faire une recherche, vous devez spécifier le paramètre "search" (en plus du paramètre "endpoint" évidemment) et le paramètre "resource" est obligatoire dans la plupart des cas. Si vous voulez récupérer toutes les données d'un point d'accès, vous devez spécifier uniquement le paramètre "endpoint". Deux langues sont disponibles : français et anglais, par défaut l'anglais sera utilisé, sinon changé le paramètre `lang` dans la classe.
 
 ### Exemples
 
@@ -32,8 +33,8 @@ Si vous voulez faire une recherche, vous devez spécifier le paramètre "search"
 ```python
 import onepyece as op
 
-# Récupérer toutes les données de l'endpoint "films"
-films = op.API(endpoint="movies")
+# Récupérer toutes les données de l'endpoint "films" en français
+films = op.API(endpoint="movies", lang="fr")
 print(films)
 # Output : 
 # Total movies found for this search : 15.
@@ -46,9 +47,9 @@ print(films)
 ```python
 import onepyece as op
 
-# Récupérer tous les personages qui sont des capitaines
+# Récupérer tous les personages qui sont des capitaines en anglais
 # Ici le paramètre resource est le terme de recherche que vous voulez faire. Ainsi on cherche ici les personnages qui ont le job "capitaine"
-capitaines = op.API(endpoint="characters", search="job", resource="capitaine")
+capitaines = op.API(endpoint="characters", search="job", resource="capitaine", lang="en")
 for capitaine in capitaines:
     print(capitaine.french_name)
 # Output :
@@ -64,9 +65,9 @@ for capitaine in capitaines:
 ```python
 import onepyece as op
 
-# Récupérer tous les équipages de Yonko
-yonko = op.API(endpoint="crews", search="yonko")
-for yonko in yonko:
+# Récupérer tous les équipages de Yonko en français
+yonkos = op.API(endpoint="crews", search="yonko", lang="fr")
+for yonko in yonkos:
     print(yonko.french_name)
 # Output :
 # L'équipage du Chapeau de Paille
