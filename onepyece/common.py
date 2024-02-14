@@ -11,7 +11,7 @@ ENDPOINTS = {
     "chapters": ["id", "count", "title", "tome_id"],
     "arcs": ["id", "count", "title", "saga_id"],
     "sagas": ["id", "count", "title"],
-    "hakis": ["id", "count", "name", "roman_name", "characters_id"],
+    "hakis": ["id", "count", "name", "roman_name", "character_id"],
     "characters": ["id", "count", "name", "job", "bounty", "status", "size", "crew_id", "fruit_id"],
     "dials": ["id", "count", "name", "type"],
     "luffy/gears": ["id", "count", "title"],
@@ -25,14 +25,23 @@ ENDPOINTS = {
 
 STRING_SEARCHES = ["name", "job", "bounty", "status", "size",
                    "type", "roman_name", "sea", "affiliation", "title"]
-ID_SEARCHES = ["saga_id", "arc_id", "characters_id",
-                "gear_id", "tome_id", "fruit_id", "crew_id", "crew_id", "captain_id"]
+ID_SEARCHES = [
+    "saga_id",
+    "arc_id",
+    "character_id",
+    "gear_id",
+    "tome_id",
+    "fruit_id",
+    "crew_id",
+    "crew_id",
+    "captain_id"
+]
 NO_RESOURCE_SEARCHES = ["count", "yonko"]
 
 AUTHORIZED_LANGS = ['fr', 'en']
 
 
-def check_params(endpoint, search=None, resource=None):
+def check_params(endpoint, lang="en", search=None, resource=None):
     """
     Check if the parameters are valid for the API
 
@@ -47,11 +56,14 @@ def check_params(endpoint, search=None, resource=None):
     :return: None if the parameters are valid
     :raises ValueError: If the parameters are not valid
     """
-    endpoint_no_lang = endpoint.split('/')[0]
-    if endpoint_no_lang not in ENDPOINTS:
-        raise ValueError(f"Unknown API endpoint '{endpoint_no_lang}', authorized endpoints are {[key for key in ENDPOINTS]}")
-    if search is not None and search not in ENDPOINTS[endpoint_no_lang]:
-        raise ValueError(f"Unknown search '{search}' for endpoint '{endpoint_no_lang}', authorized searches are {[key for key in ENDPOINTS[endpoint_no_lang]]}")
+    if lang not in AUTHORIZED_LANGS:
+        raise ValueError(f"Unknown language '{lang}', authorized languages are {AUTHORIZED_LANGS}")
+    if endpoint not in ENDPOINTS:
+        raise ValueError(f"Unknown API endpoint '{endpoint}', authorized endpoints are {[key for key in ENDPOINTS]}")
+    if search is not None and search not in ENDPOINTS[endpoint]:
+        raise ValueError(f"""Unknown search '{search}' for endpoint '{endpoint}',
+                         authorized searches are {[key for key in ENDPOINTS[endpoint]]}
+                    """)
     if search is not None and search not in NO_RESOURCE_SEARCHES and resource is None:
         raise ValueError("Resource is required for this search")
     if search in [NO_RESOURCE_SEARCHES] and resource is not None:
@@ -60,7 +72,7 @@ def check_params(endpoint, search=None, resource=None):
         raise ValueError("Resource must be an integer for this search")
 
 
-def build_url(endpoint, search=None, resource=None):
+def build_url(endpoint, lang="en", search=None, resource=None):
     """
     Build the url for the API
 
@@ -72,7 +84,8 @@ def build_url(endpoint, search=None, resource=None):
 
     :return: The url for the API
     """
-    check_params(endpoint, search, resource)
+    check_params(endpoint, lang, search, resource)
+    endpoint = f"{endpoint}/{lang}" if lang is not None else f"{endpoint}/en"
     if search is not None:
         if resource is not None:
             resource = convert_resource(resource)
@@ -97,10 +110,10 @@ def adding_search(endpoint, search, resource=None):
     """
     # there are some exceptions to the rule because of the API
     if search in STRING_SEARCHES:
-        return f"{URL}{endpoint}/search/?{search}={resource}"
+        return f"{URL}{endpoint}/search?{search}={resource}"
 
     if search in ID_SEARCHES:
-        return f"{URL}{endpoint}/{search[:-3]}/{resource}/"
+        return f"{URL}{endpoint}/{search[:-3]}/{resource}"
 
     return f"{URL}{endpoint}/{resource}"
 

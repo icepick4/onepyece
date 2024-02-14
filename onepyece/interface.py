@@ -2,7 +2,7 @@
 Mother class of the API wrapper
 """
 from .api import get_data
-from .common import build_url, pretty_print, AUTHORIZED_LANGS
+from .common import build_url, pretty_print
 
 
 class API:
@@ -21,14 +21,13 @@ class API:
     """
 
     def __init__(self, endpoint=None, search_term=None, resource=None, data=None, lang="en"):
-        if lang not in AUTHORIZED_LANGS:
-            raise ValueError(f"Unknown language '{lang}', authorized languages are {AUTHORIZED_LANGS}")
-        self.endpoint = f"{endpoint}/{lang}" if endpoint is not None else f"{endpoint}/en"
+        self.endpoint = endpoint
         self.search_term = search_term
         self.resource = resource
+        self.lang = lang
 
         if self.endpoint is not None:
-            self.url = build_url(self.endpoint, self.search_term, self.resource)
+            self.url = build_url(self.endpoint, self.lang, self.search_term, self.resource)
         if data is None:
             self.__load()
         else:
@@ -84,8 +83,8 @@ class API:
                 f" and resource_id:{self.resource}"
             )
         if isinstance(api_data, list) and len(api_data) > 1:
-            self.results = [API(data=result) for result in api_data]
-            self.count = len(api_data)
+            self.results = [API(data=result) for result in api_data if result != []]
+            self.count = len(self.results)
         elif isinstance(api_data, list) and len(api_data) == 1:
             self.__dict__.update(api_data[0])
         elif isinstance(api_data, dict):
@@ -115,7 +114,7 @@ class API:
         Search for a specific search term after initializing the API object
         """
         if self.search_term is None and self.resource is None:
-            return API(self.endpoint, search, resource)
+            return API(self.endpoint, search_term=search, resource=resource)
         raise ValueError(
             "You can't instantiate a search API object because you already have"
             f"{self.search_term} as search and {self.resource} as resource"

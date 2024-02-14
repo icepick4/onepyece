@@ -9,7 +9,7 @@ class TestAPI(unittest.TestCase):
         self.assertIsInstance(api_object, interface.API)
         self.assertEqual(api_object.resource, 1)
         self.assertEqual(api_object.id, 1)
-        self.assertEqual(api_object.french_name, "Monkey D Luffy")
+        self.assertEqual(api_object.name, "Monkey D Luffy")
 
     def test_unique_character_with_wrong_resource_id(self):
         self.assertRaises(ValueError, interface.API, "characters", "id", "wrong")
@@ -27,7 +27,7 @@ class TestAPI(unittest.TestCase):
         self.assertEqual(api_object.resource, "Haki")
         self.assertRaises(AttributeError, getattr, api_object, "id")
         self.assertIsInstance(api_object.results[0], interface.API)
-        self.assertEqual(api_object.results[0].french_name, "Haki de l'Observation")
+        self.assertEqual(api_object.results[0].name, "Observation Haki")
 
     def test_count_implicit(self):
         api_object = interface.API("hakis")
@@ -56,12 +56,12 @@ class TestAPI(unittest.TestCase):
         self.assertRaises(TypeError, iter, api_object)
 
     def test_recursive_dict(self):
-        api_object = interface.API('hakis', 'characters_id', 1)
-        self.assertIsInstance(api_object[0].characters.haki_character, interface.API)
+        api_object = interface.API('hakis', 'character_id', 1)
+        self.assertIsInstance(api_object[0].character, interface.API)
 
     def test_search_method(self):
         api_object = interface.API('characters').search('job', 'capitaine')
-        self.assertEqual(api_object[1].french_name, 'Cavendish')
+        self.assertEqual(api_object[1].name, 'Cavendish')
 
     def test_search_method_with_search(self):
         with self.assertRaises(ValueError):
@@ -73,9 +73,9 @@ class TestAPI(unittest.TestCase):
 
     def test_edit_resource(self):
         api_object = interface.API('characters', 'name', 'luffy')
-        self.assertEqual(api_object.french_name, 'Monkey D Luffy')
+        self.assertEqual(api_object.name, 'Monkey D Luffy')
         api_object.edit_resource('zoro')
-        self.assertEqual(api_object.french_name, 'Roronoa Zoro')
+        self.assertEqual(api_object.name, 'Roronoa Zoro')
 
     def test_edit_resource_not_allowed(self):
         api_object = interface.API('characters', 'count')
@@ -87,11 +87,11 @@ class TestAPI(unittest.TestCase):
 
     def test_edit_resource_attributes(self):
         api_object = interface.API('characters', 'name', 'luffy')
-        self.assertEqual(api_object.french_name, 'Monkey D Luffy')
-        self.assertEqual(api_object.url, 'https://api.api-onepiece.com/characters/search/name/luffy')
+        self.assertEqual(api_object.name, 'Monkey D Luffy')
+        self.assertEqual(api_object.url, 'https://api.api-onepiece.com/v2/characters/en/search?name=luffy')
         api_object.edit_resource('zoro')
-        self.assertEqual(api_object.french_name, 'Roronoa Zoro')
-        self.assertEqual(api_object.url, 'https://api.api-onepiece.com/characters/search/name/zoro')
+        self.assertEqual(api_object.name, 'Roronoa Zoro')
+        self.assertEqual(api_object.url, 'https://api.api-onepiece.com/v2/characters/en/search?name=zoro')
 
     def test_edit_resource_with_wrong_resource(self):
         api_object = interface.API('characters', 'name', 'luffy')

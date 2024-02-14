@@ -8,7 +8,7 @@ def episode_by_id(resource):
     """
     Get episode by id
 
-    See https://api-onepiece.com/documentation/5-episode for more information
+    See https://api-onepiece.com/en/documentation/5-episode for more information
 
     :param resource: id of the episode (int)
     :return: API unique object
@@ -20,7 +20,7 @@ def episode_by_title(resource):
     """
     Get episode by title
 
-    See https://api-onepiece.com/documentation/5-episode for more information
+    See https://api-onepiece.com/en/documentation/5-episode for more information
 
     :param resource: title of the episode (str)
     :return: API list object (with episodes matching the title search)
@@ -32,7 +32,7 @@ def episode_by_saga_id(resource):
     """
     Get episode by saga id
 
-    See https://api-onepiece.com/documentation/5-episode for more information
+    See https://api-onepiece.com/en/documentation/5-episode for more information
 
     :param resource: saga id of the episode (int)
     :return: API list object (with episodes matching the saga id search)
@@ -44,7 +44,7 @@ def episode_by_arc_id(resource):
     """
     Get episode by arc id
 
-    See https://api-onepiece.com/documentation/5-episode for more information
+    See https://api-onepiece.com/en/documentation/5-episode for more information
 
     :param resource: arc id of the episode (int)
     :return: API list object (with episodes matching the arc id search)
@@ -56,7 +56,7 @@ def episode_by_arc_title(resource):
     """
     Get episode by arc title
 
-    See https://api-onepiece.com/documentation/5-episode for more information
+    See https://api-onepiece.com/en/documentation/5-episode for more information
 
     :param resource: arc title of the episode (str)
     :return: API list object (with episodes matching the arc title search)
@@ -68,7 +68,7 @@ def episode_by_saga_title(resource):
     """
     Get episode by saga title
 
-    See https://api-onepiece.com/documentation/5-episode for more information
+    See https://api-onepiece.com/en/documentation/5-episode for more information
 
     :param resource: saga title of the episode (str)
     :return: API list object (with episodes matching the saga title search)
@@ -80,7 +80,7 @@ def count_episodes():
     """
     Get count of episodes
 
-    See https://api-onepiece.com/documentation/5-episode for more information
+    See https://api-onepiece.com/en/documentation/5-episode for more information
 
     :return: API unique object (with the count of episodes)
     """
@@ -91,7 +91,7 @@ def movie_by_id(resource):
     """
     Get movie by id
 
-    See https://api-onepiece.com/documentation/7-movie for more information
+    See https://api-onepiece.com/en/documentation/7-movie for more information
 
     :param resource: id of the movie (int)
     :return: API unique object
@@ -103,7 +103,7 @@ def movie_by_title(resource):
     """
     Get movie by title
 
-    See https://api-onepiece.com/documentation/7-movie for more information
+    See https://api-onepiece.com/en/documentation/7-movie for more information
 
     :param resource: title of the movie (str)
     :return: API list object (with movies matching the title search)
@@ -115,7 +115,7 @@ def count_movies():
     """
     Get count of movies
 
-    See https://api-onepiece.com/documentation/7-movie for more information
+    See https://api-onepiece.com/en/documentation/7-movie for more information
 
     :return: API unique object (with the count of movies)
     """
@@ -126,7 +126,7 @@ def tome_by_id(resource):
     """
     Get tome by id
 
-    See https://api-onepiece.com/documentation/4-tome for more information
+    See https://api-onepiece.com/en/documentation/4-tome for more information
 
     :param resource: id of the tome (int)
     :return: API unique object
@@ -138,7 +138,7 @@ def tome_by_title(resource):
     """
     Get tome by title
 
-    See https://api-onepiece.com/documentation/4-tome for more information
+    See https://api-onepiece.com/en/documentation/4-tome for more information
 
     :param resource: title of the tome (str)
     :return: API list object (with tomes matching the title search)
@@ -150,7 +150,7 @@ def count_tomes():
     """
     Get count of tomes
 
-    See https://api-onepiece.com/documentation/4-tome for more information
+    See https://api-onepiece.com/en/documentation/4-tome for more information
 
     :return: API unique object (with the count of tomes)
     """
@@ -161,7 +161,7 @@ def chapter_by_id(resource):
     """
     Get chapter by id
 
-    See https://api-onepiece.com/documentation/3-chapter for more information
+    See https://api-onepiece.com/en/documentation/3-chapter for more information
 
     :param resource: id of the chapter (int)
     :return: API unique object
@@ -173,7 +173,7 @@ def chapter_by_title(resource):
     """
     Get chapter by title
 
-    See https://api-onepiece.com/documentation/3-chapter for more information
+    See https://api-onepiece.com/en/documentation/3-chapter for more information
 
     :param resource: title of the chapter (str)
     :return: API list object (with chapters matching the title search)
@@ -185,7 +185,7 @@ def chapter_by_tome_id(resource):
     """
     Get chapter by tome id
 
-    See https://api-onepiece.com/documentation/3-chapter for more information
+    See https://api-onepiece.com/en/documentation/3-chapter for more information
 
     :param resource: tome id of the chapter (int)
     :return: API list object (with chapters matching the tome id search)
@@ -197,7 +197,7 @@ def chapter_by_tome(resource):
     """
     Get chapter by tome title
 
-    See https://api-onepiece.com/documentation/3-chapter for more information
+    See https://api-onepiece.com/en/documentation/3-chapter for more information
 
     :param resource: title of the tome (str)
     :return: API list object (with chapters matching the tome title search)
@@ -209,7 +209,7 @@ def count_chapters():
     """
     Get count of chapters
 
-    See https://api-onepiece.com/documentation/3-chapter for more information
+    See https://api-onepiece.com/en/documentation/3-chapter for more information
 
     :return: API unique object (with the count of chapters)
     """
@@ -220,7 +220,7 @@ def arc_by_id(resource):
     """
     Get arc by id
 
-    See https://api-onepiece.com/documentation/15-arc for more information
+    See https://api-onepiece.com/en/documentation/15-arc for more information
 
     :param resource: id of the arc (int)
     :return: API unique object
@@ -232,7 +232,7 @@ def arc_by_title(resource):
     """
     Get arc by title
 
-    See https://api-onepiece.com/documentation/15-arc for more information
+    See https://api-onepiece.com/en/documentation/15-arc for more information
 
     :param resource: title of the arc (str)
     :return: API list object (with arcs matching the title search)
@@ -244,7 +244,7 @@ def arc_by_saga_id(resource):
     """
     Get arc by saga id
 
-    See https://api-onepiece.com/documentation/15-arc for more information
+    See https://api-onepiece.com/en/documentation/15-arc for more information
 
     :param resource: saga id of the arc (int)
     :return: API list object (with arcs matching the saga id search)
@@ -256,7 +256,7 @@ def count_arcs():
     """
     Get count of arcs
 
-    See https://api-onepiece.com/documentation/15-arc for more information
+    See https://api-onepiece.com/en/documentation/15-arc for more information
 
     :return: API unique object (with the count of arcs)
     """
@@ -267,7 +267,7 @@ def saga_by_id(resource):
     """
     Get saga by id
 
-    See https://api-onepiece.com/documentation/1-saga for more information
+    See https://api-onepiece.com/en/documentation/1-saga for more information
 
     :param resource: id of the saga (int)
     :return: API unique object
@@ -279,7 +279,7 @@ def saga_by_title(resource):
     """
     Get saga by title
 
-    See https://api-onepiece.com/documentation/1-saga for more information
+    See https://api-onepiece.com/en/documentation/1-saga for more information
 
     :param resource: title of the saga (str)
     :return: API list object (with sagas matching the title search)
@@ -291,7 +291,7 @@ def count_sagas():
     """
     Get count of sagas
 
-    See https://api-onepiece.com/documentation/1-saga for more information
+    See https://api-onepiece.com/en/documentation/1-saga for more information
 
     :return: API unique object (with the count of sagas)
     """
@@ -302,7 +302,7 @@ def haki_by_id(resource):
     """
     Get haki by id
 
-    See https://api-onepiece.com/documentation/9-haki for more information
+    See https://api-onepiece.com/en/documentation/9-haki for more information
 
     :param resource: id of the haki (int)
     :return: API unique object
@@ -314,7 +314,7 @@ def haki_by_name(resource):
     """
     Get haki by name
 
-    See https://api-onepiece.com/documentation/9-haki for more information
+    See https://api-onepiece.com/en/documentation/9-haki for more information
 
     :param resource: name of the haki (str)
     :return: API list object (with hakis matching the name search)
@@ -326,7 +326,7 @@ def haki_by_roman_name(resource):
     """
     Get haki by romanized name
 
-    See https://api-onepiece.com/documentation/9-haki for more information
+    See https://api-onepiece.com/en/documentation/9-haki for more information
 
     :param resource: romanized name of the haki (str)
     :return: API list object (with hakis matching the romanized name search)
@@ -334,23 +334,23 @@ def haki_by_roman_name(resource):
     return API("hakis", "roman_name", resource)
 
 
-def haki_by_characters_id(resource):
+def haki_by_character_id(resource):
     """
     Get haki by character id
 
-    See https://api-onepiece.com/documentation/9-haki for more information
+    See https://api-onepiece.com/en/documentation/9-haki for more information
 
     :param resource: id of the character who has the haki (int)
     :return: API list object (with hakis matching the character id search)
     """
-    return API("hakis", "characters_id", resource)
+    return API("hakis", "character_id", resource)
 
 
 def count_hakis():
     """
     Get count of hakis
 
-    See https://api-onepiece.com/documentation/9-haki for more information
+    See https://api-onepiece.com/en/documentation/9-haki for more information
 
     :return: API unique object (with the count of hakis)
     """
@@ -361,7 +361,7 @@ def character_by_id(resource):
     """
     Get character by id
 
-    See https://api-onepiece.com/documentation/13-character for more information
+    See https://api-onepiece.com/en/documentation/13-character for more information
 
     :param resource: id of the character (int)
     :return: API unique object
@@ -373,7 +373,7 @@ def character_by_name(resource):
     """
     Get character by name
 
-    See https://api-onepiece.com/documentation/13-character for more information
+    See https://api-onepiece.com/en/documentation/13-character for more information
 
     :param resource: name of the character (str)
     :return: API list object (with characters matching the name search)
@@ -385,7 +385,7 @@ def character_by_job(resource):
     """
     Get character by job
 
-    See https://api-onepiece.com/documentation/13-character for more information
+    See https://api-onepiece.com/en/documentation/13-character for more information
 
     :param resource: job of the character (str)
     :return: API list object (with characters matching the job search)
@@ -397,7 +397,7 @@ def character_by_bounty(resource):
     """
     Get character by bounty
 
-    See https://api-onepiece.com/documentation/13-character for more information
+    See https://api-onepiece.com/en/documentation/13-character for more information
 
     :param resource: bounty of the character (str) (ex: '1.000.000')
     :return: API list object (with characters matching the bounty search)
@@ -409,7 +409,7 @@ def character_by_status(resource):
     """
     Get character by status
 
-    See https://api-onepiece.com/documentation/13-character for more information
+    See https://api-onepiece.com/en/documentation/13-character for more information
 
     :param resource: status of the character (str) (ex: 'vivant', 'mort')
     :return: API list object (with characters matching the status search)
@@ -421,7 +421,7 @@ def character_by_size(resource):
     """
     Get character by size
 
-    See https://api-onepiece.com/documentation/13-character for more information
+    See https://api-onepiece.com/en/documentation/13-character for more information
 
     :param resource: size of the character (str) or (int) (ex: '180cm', 180)
     :return: API list object (with characters matching the size search)
@@ -433,7 +433,7 @@ def character_by_crew_id(resource):
     """
     Get character by crew id
 
-    See https://api-onepiece.com/documentation/13-character for more information
+    See https://api-onepiece.com/en/documentation/13-character for more information
 
     :param resource: id of the crew of the character (int)
     :return: API list object (with characters matching the crew id search)
@@ -445,7 +445,7 @@ def character_by_fruit_id(resource):
     """
     Get character by fruit id
 
-    See https://api-onepiece.com/documentation/13-character for more information
+    See https://api-onepiece.com/en/documentation/13-character for more information
 
     :param resource: id of the fruit of the character (int)
     :return: API list object (with characters matching the fruit id search)
@@ -457,7 +457,7 @@ def count_characters():
     """
     Get count of characters
 
-    See https://api-onepiece.com/documentation/13-character for more information
+    See https://api-onepiece.com/en/documentation/13-character for more information
 
     :return: API unique object (with the count of characters)
     """
@@ -468,7 +468,7 @@ def dial_by_id(resource):
     """
     Get dial by id
 
-    See https://api-onepiece.com/documentation/6-dial for more information
+    See https://api-onepiece.com/en/documentation/6-dial for more information
 
     :param resource: id of the dial (int)
     :return: API unique object
@@ -480,7 +480,7 @@ def dial_by_name(resource):
     """
     Get dial by name
 
-    See https://api-onepiece.com/documentation/6-dial for more information
+    See https://api-onepiece.com/en/documentation/6-dial for more information
 
     :param resource: name of the dial (str)
     :return: API list object (with dials matching the name search)
@@ -492,7 +492,7 @@ def dial_by_type(resource):
     """
     Get dial by type
 
-    See https://api-onepiece.com/documentation/6-dial for more information
+    See https://api-onepiece.com/en/documentation/6-dial for more information
 
     :param resource: type of the dial (str)
     :return: API list object (with dials matching the type search)
@@ -504,7 +504,7 @@ def count_dials():
     """
     Get count of dials
 
-    See https://api-onepiece.com/documentation/6-dial for more information
+    See https://api-onepiece.com/en/documentation/6-dial for more information
 
     :return: API unique object (with the count of dials)
     """
@@ -515,7 +515,7 @@ def luffy_gear_by_id(resource):
     """
     Get luffy gear by id
 
-    See https://api-onepiece.com/documentation/10-luffy-gear for more information
+    See https://api-onepiece.com/en/documentation/10-luffy-gear for more information
 
     :param resource: id of the luffy gear (int)
     :return: API unique object
@@ -527,7 +527,7 @@ def luffy_gear_by_title(resource):
     """
     Get luffy gear by title
 
-    See https://api-onepiece.com/documentation/10-luffy-gear for more information
+    See https://api-onepiece.com/en/documentation/10-luffy-gear for more information
 
     :param resource: title of the luffy gear (str)
     :return: API list object (with luffy gears matching the title search)
@@ -539,7 +539,7 @@ def count_luffy_gears():
     """
     Get count of luffy gears
 
-    See https://api-onepiece.com/documentation/10-luffy-gear for more information
+    See https://api-onepiece.com/en/documentation/10-luffy-gear for more information
 
     :return: API unique object (with the count of luffy gears)
     """
@@ -550,7 +550,7 @@ def luffy_technique_by_id(resource):
     """
     Get luffy technique by id
 
-    See https://api-onepiece.com/documentation/11-luffy-technique for more information
+    See https://api-onepiece.com/en/documentation/11-luffy-technique for more information
 
     :param resource: id of the luffy technique (int)
     :return: API unique object
@@ -562,7 +562,7 @@ def luffy_technique_by_name(resource):
     """
     Get luffy technique by name
 
-    See https://api-onepiece.com/documentation/11-luffy-technique for more information
+    See https://api-onepiece.com/en/documentation/11-luffy-technique for more information
 
     :param resource: name of the luffy technique (str)
     :return: API list object (with luffy techniques matching the name search)
@@ -574,7 +574,7 @@ def luffy_technique_by_translation(resource):
     """
     Get luffy technique by translation
 
-    See https://api-onepiece.com/documentation/11-luffy-technique for more information
+    See https://api-onepiece.com/en/documentation/11-luffy-technique for more information
 
     :param resource: translation of the luffy technique (str) (french translation)
     :return: API list object (with luffy techniques matching the translation search)
@@ -586,7 +586,7 @@ def luffy_technique_by_gear_id(resource):
     """
     Get luffy technique by gear id
 
-    See https://api-onepiece.com/documentation/11-luffy-technique for more information
+    See https://api-onepiece.com/en/documentation/11-luffy-technique for more information
 
     :param resource: id of the gear of the luffy technique (int)
     :return: API list object (with luffy techniques matching the gear id search)
@@ -598,7 +598,7 @@ def count_luffy_techniques():
     """
     Get count of luffy techniques
 
-    See https://api-onepiece.com/documentation/11-luffy-technique for more information
+    See https://api-onepiece.com/en/documentation/11-luffy-technique for more information
 
     :return: API unique object (with the count of luffy techniques)
     """
@@ -609,7 +609,7 @@ def locate_by_id(resource):
     """
     Get locate by id
 
-    See https://api-onepiece.com/documentation/16-locate for more information
+    See https://api-onepiece.com/en/documentation/16-locate for more information
 
     :param resource: id of the locate (int)
     :return: API unique object
@@ -621,7 +621,7 @@ def locate_by_name(resource):
     """
     Get locate by name
 
-    See https://api-onepiece.com/documentation/16-locate for more information
+    See https://api-onepiece.com/en/documentation/16-locate for more information
 
     :param resource: name of the locate (str)
     :return: API list object (with locates matching the name search)
@@ -633,7 +633,7 @@ def locate_by_sea(resource):
     """
     Get locate by sea
 
-    See https://api-onepiece.com/documentation/16-locate for more information
+    See https://api-onepiece.com/en/documentation/16-locate for more information
 
     :param resource: sea of the locate (str)
     :return: API list object (with locates matching the sea search)
@@ -645,7 +645,7 @@ def locate_by_affiliation(resource):
     """
     Get locate by affiliation
 
-    See https://api-onepiece.com/documentation/16-locate for more information
+    See https://api-onepiece.com/en/documentation/16-locate for more information
 
     :param resource: affiliation of the locate (str)
     :return: API list object (with locates matching the affiliation search)
@@ -657,7 +657,7 @@ def count_locates():
     """
     Get count of locates
 
-    See https://api-onepiece.com/documentation/16-locate for more information
+    See https://api-onepiece.com/en/documentation/16-locate for more information
 
     :return: API unique object (with the count of locates)
     """
@@ -668,7 +668,7 @@ def fruit_by_id(resource):
     """
     Get fruit by id
 
-    See https://api-onepiece.com/documentation/2-fruit for more information
+    See https://api-onepiece.com/en/documentation/2-fruit for more information
 
     :param resource: id of the fruit (int)
     :return: API unique object
@@ -680,7 +680,7 @@ def fruit_by_name(resource):
     """
     Get fruit by name
 
-    See https://api-onepiece.com/documentation/2-fruit for more information
+    See https://api-onepiece.com/en/documentation/2-fruit for more information
 
     :param resource: name of the fruit (str)
     :return: API list object (with fruits matching the name search)
@@ -692,7 +692,7 @@ def fruit_by_type(resource):
     """
     Get fruit by type
 
-    See https://api-onepiece.com/documentation/2-fruit for more information
+    See https://api-onepiece.com/en/documentation/2-fruit for more information
 
     :param resource: type of the fruit (str) (paramecia, zoan, zoan mythique, logia)
     :return: API list object (with fruits matching the type search)
@@ -704,7 +704,7 @@ def count_fruits():
     """
     Get count of fruits
 
-    See https://api-onepiece.com/documentation/2-fruit for more information
+    See https://api-onepiece.com/en/documentation/2-fruit for more information
 
     :return: API unique object (with the count of fruits)
     """
@@ -715,7 +715,7 @@ def sword_by_id(resource):
     """
     Get sword by id
 
-    See https://api-onepiece.com/documentation/8-sword for more information
+    See https://api-onepiece.com/en/documentation/8-sword for more information
 
     :param resource: id of the sword (int)
     :return: API unique object
@@ -727,7 +727,7 @@ def sword_by_name(resource):
     """
     Get sword by name
 
-    See https://api-onepiece.com/documentation/8-sword for more information
+    See https://api-onepiece.com/en/documentation/8-sword for more information
 
     :param resource: name of the sword (str)
     :return: API list object (with swords matching the name search)
@@ -735,16 +735,28 @@ def sword_by_name(resource):
     return API("swords", "name", resource)
 
 
-def sword_by_destroy(resource):
+def sword_by_type(resource):
     """
     Get sword by type
 
-    See https://api-onepiece.com/documentation/8-sword for more information
+    See https://api-onepiece.com/en/documentation/8-sword for more information
 
-    :param resource: type of the sword (int) (1 = is destroyed, 0 = is not destroyed)
+    :param resource: type of the sword (string) (ex: 'nodachi', 'katana')
     :return: API list object (with swords matching the type search)
     """
-    return API("swords", "destroy", resource)
+    return API("swords", "type", resource)
+
+
+def sword_by_state(resource):
+    """
+    Get sword by state
+
+    See https://api-onepiece.com/en/documentation/8-sword for more information
+
+    :param resource: state of the sword (boolean) (ex: true, false)
+    :return: API list object (with swords matching the state search)
+    """
+    return API("swords", "state", resource)
 
 
 def count_swords():
