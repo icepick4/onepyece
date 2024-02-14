@@ -59,10 +59,11 @@ def check_params(endpoint, lang="en", search=None, resource=None):
     if lang not in AUTHORIZED_LANGS:
         raise ValueError(f"Unknown language '{lang}', authorized languages are {AUTHORIZED_LANGS}")
     if endpoint not in ENDPOINTS:
-        raise ValueError(f"Unknown API endpoint '{endpoint}', authorized endpoints are {[key for key in ENDPOINTS]}")
+        raise ValueError(f"Unknown API endpoint '{endpoint}', \
+                         authorized endpoints are {list(ENDPOINTS)}")
     if search is not None and search not in ENDPOINTS[endpoint]:
         raise ValueError(f"""Unknown search '{search}' for endpoint '{endpoint}',
-                         authorized searches are {[key for key in ENDPOINTS[endpoint]]}
+                         authorized searches are {list(ENDPOINTS[endpoint])}
                     """)
     if search is not None and search not in NO_RESOURCE_SEARCHES and resource is None:
         raise ValueError("Resource is required for this search")
