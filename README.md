@@ -4,7 +4,7 @@
 
 <img src="https://raw.githubusercontent.com/icepick4/onepyece/main/docs/onepyece_logo.png" width="200px"/>
 
-*Image generated with Midjourney.*
+_Image generated with Midjourney._
 
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/onepyece)
 ![PyPI](https://img.shields.io/pypi/v/onepyece)
@@ -21,7 +21,7 @@
 
 Python **API wrapper** for https://api-onepiece.com/ \
 Thank's to this package you can simply get informations about One Piece characters, fruits, crews, etc. The datas provided by the API are in french only for the moment. \
-Learn more about possibilities in the [Usage](#usage) section. 
+Learn more about possibilities in the [Usage](#usage) section.
 
 ⚠️*This package is still in development and it's my very first python package, so it may not be stable.*
 
@@ -33,37 +33,64 @@ Learn more about possibilities in the [Usage](#usage) section.
 
 **There are several solutions :**
 
-- Use this command ``pip install onepyece`` to get it from [PyPi](https://pypi.org/project/onepyece/)
-- Use this command ``pip install git+https://github.com/icepick4/onepyece`` to download it from this repo.
-- Download either the .zip or the tar.gz archive from the last release and then use this command `` pip install <path_to_archive> ``
+-   Use this command `pip install onepyece` to get it from [PyPi](https://pypi.org/project/onepyece/)
+-   Use this command `pip install git+https://github.com/icepick4/onepyece` to download it from this repo.
+-   Download either the .zip or the tar.gz archive from the last release and then use this command `pip install <path_to_archive>`
 
 ## Usage
 
 ```py
 >>> import onepyece as op
+
+
 >>> sanji = op.character_by_name('sanji') # You can get a character by its name
->>> sanji.birthday
-'2000-03-02'
+>>> sanji.size
+>>> '180cm'
+>>> sanji.crew['roman_name']
+>>> 'Mugiwara no Ichimi'
+
 >>> nb_fruits = op.count_fruits() # You can get the count of a specific endpoint
 >>> nb_fruits.count
-197
+>>> 206
 >>> nb_fruits.url
-https://api.api-onepiece.com/fruits/count
+>>> 'https://api.api-onepiece.com/v2/fruits/en/count'
+
 >>> crews = op.API('crews') # List of all the crews in dict form as you can see below
 >>> crews[0]
-API(object={'endpoint': None, 'search_term': None, 'resource': None, 'object': True, 'id': 1, 'french_name': 'L’équipage du Chapeau de Paille', 'roman_name': 'Mugiwara no Ichimi', 'description': '', 'total_prime': '3.161.000.100', 'number': '10', 'status': 'actif', 'isYonko': True, 'affiliation': ''})
+>>> API(object={'endpoint': None, 'search_term': None, 'resource': None, 'lang': 'en', 'url': None, 'id': 1, 'name': 'The Chapeau de Paille crew', 'description': None, 'status': 'assets', 'roman_name': 'Mugiwara no Ichimi', 'total_prime': '3.161.000.100', 'number': '10', 'is_yonko': True})
 >>> crews.count # You can implicitly get the count of an endpoint by getting the whole list of it.
-149
->>>crews[1].french_name
-'L’équipage du Roux'
+>>> 149
+>>> crews[1].name
+>>> 'Le Roux crew'
+
+# Make a search on a list already fetched
+>>> roger_crew = crews.search('name', 'roger')
+>>> roger_crew
+>>> Total crews found for this search: 1.
+>>> roger_crew[0]
+{
+    "endpoint": null,
+    "search_term": null,
+    "resource": null,
+    "lang": "en",
+    "url": null,
+    "id": 5,
+    "name": "The Pirates Roger crew",
+    "description": null,
+    "status": "dissolved",
+    "roman_name": "Rojā Kaizoku Dan",
+    "total_prime": "5.564.800.000",
+    "number": "30",
+    "is_yonko": true
+}
 ```
 
-To learn more about the possibilities, you can check the 
+To learn more about the possibilities, you can check the
 detailed **documentation** [here](docs/) and more examples [here](docs/examples.py).
 
 ## Tests
 
-You can test the application by running ``python -m tests``
+You can test the application by running `python -m tests`
 
 ## Contributing
 
